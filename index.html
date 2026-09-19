@@ -114,13 +114,6 @@
         <div hidden="" data-ai-note="done" style="position:absolute;left:980px;top:90px;width:300px;"><p data-by="author">les cadres ne sont ABSOLUMENT pas cohérents et centrés</p><p data-by="ai">Les grands cadres sont remplacés par trois cadres calibrés sur les zones exactes du schéma : flux observés, variables physiques échantillonnées et décodeur physique.</p></div><aside class="notes">Timing: 0:35. Advance through the three tightly framed regions: measured fluxes and errors enter the encoder; the posterior draw contains the physical variables x and theta; DSPS decodes them into a spectrum and predicted fluxes.</aside>
       </section>
 
-      <!-- 11 · RWS · 0:50 -->
-      <section class="editorial-slide">
-        <div class="kicker">Methodology</div>
-        <h2>Alternate simulation and real observations.</h2>
-        <div class="training-algorithm"><article class="training-lane sleep-lane"><strong>SLEEP</strong><div class="algorithm-steps"><span>sample θ</span><b>→</b><span>forward model</span><b>→</b><span>simulated photometry</span><b>→</b><span>recover θ</span></div></article><article class="training-lane wake-lane"><strong>WAKE</strong><div class="algorithm-steps"><span>real photometry</span><b>→</b><span>propose θ draws</span><b>→</b><span>likelihood weights</span><b>→</b><span>update both models</span></div></article></div><div class="algorithm-purpose"><span><strong>Sleep</strong> maintains proposal coverage.</span><span><strong>Wake</strong> learns from the observed catalogue.</span></div><aside class="notes">Timing: 0:35. Sleep supplies known parameters without labels for real observations and maintains broad proposal coverage. Wake tests posterior draws against real photometry and updates both the posterior network and the population prior. This schedule mitigates poor-proposal feedback but is not a proof against collapse.</aside>
-      </section>
-
       <!-- 12 · visual result example · 0:35 -->
       <section>
         <div class="kicker">Example result</div>
@@ -142,12 +135,11 @@
       </section>
 
       <section class="editorial-slide rivalry-slide">
-        <div class="kicker">Benchmark rivalry</div>
-        <h2>They come from Cambridge. <span class="uk-flag" aria-label="United Kingdom">🇬🇧</span></h2>
-        <div class="rivalry-reveal fragment fade-up" data-fragment-index="0"><img src="assets/state-affair.png" alt="Historical French collage with Napoleon, Joan of Arc and maps"><strong>This is a matter of state.</strong></div>
-        <div class="rivalry-answer fragment fade-up" data-fragment-index="1"><b>More seriously:</b> a strong published population-level baseline on the same field and matched galaxies.</div>
+        <div class="kicker">Benchmark context</div>
+        <div class="rivalry-joke fragment fade-in-then-out" data-fragment-index="0"><h2>They are English. <span class="uk-flag" aria-label="United Kingdom">🇬🇧</span></h2><img src="assets/state-affair.png" alt="Historical French collage with Napoleon, Joan of Arc and maps"><strong>This is a matter of state.</strong></div>
+        <div class="rivalry-serious fragment fade-up" data-fragment-index="1"><h2>More seriously.</h2><p>Pop-COSMOS is a strong published population-level baseline on the same field and the same matched galaxies.</p></div>
 
-        <div hidden="" data-ai-note="done" style="position:absolute;left:752px;top:144px;width:300px;"><p data-by="author">retire le sous titre</p><p data-by="ai">Le sous-titre sous Cambridge a été retiré.</p></div><aside class="notes">Timing: 0:18. First show Cambridge and the flag. Advance once for the supplied historical collage and joke, then once more for the serious answer: Pop-COSMOS is a strong published population-level baseline on the same field and matched galaxies.</aside>
+        <div hidden="" data-ai-note="done" style="position:absolute;left:752px;top:144px;width:300px;"><p data-by="author">retire le sous titre</p><p data-by="ai">Le sous-titre sous Cambridge a été retiré.</p></div><aside class="notes">Timing: 0:20. The slide initially shows only the neutral benchmark kicker. Advance once: “They are English” and the historical image appear together. Deliver the joke. Advance again as you say “More seriously”: the entire joke disappears and is replaced by the scientific reason for using Pop-COSMOS, namely a strong published population-level baseline on the same field and matched galaxies.</aside>
       </section>
 
       <!-- 14 · DSPS results · 1:00 -->
@@ -256,6 +248,13 @@
         </aside>
       </section>
 
+      <section class="editorial-slide">
+        <div class="kicker">Beyond the original benchmark</div>
+        <h2>AION-1 is already being reused.</h2>
+        <div class="aion-paper-wall"><article><img src="assets/aion1-use-uncertainty.png" alt="First page of Beyond Point Estimates, an AION-1 uncertainty quantification study"><strong>Uncertainty quantification</strong><span>calibrated intervals for galaxy properties</span></article><article><img src="assets/aion1-use-audit.png" alt="First page of a causal audit of survey detection channels in AION-1"><strong>Scientific audit</strong><span>survey systematics and redshift bias</span></article><article><img src="assets/aion1-use-dinospec.png" alt="First page of DINOspec, which reuses the AION-1 spectral tokenizer"><strong>Model composition</strong><span>aligning image and spectral representations</span></article></div>
+        <p class="source-line">Tame-Narvaez et al. (2026), arXiv:2606.07771 · Kendiukhov (2026), arXiv:2608.23626 · Lastufka et al. (2026), arXiv:2608.30503.</p><aside class="notes">Timing: 0:25. These are independent examples of AION-1 being reused beyond its original paper: uncertainty quantification on frozen embeddings, a causal audit of survey systematics, and DINOspec reusing the spectral tokenizer for multimodal alignment. This is the broader purpose of a foundation model: not one final task, but infrastructure that other scientific work can test, adapt and sometimes challenge. Use that sentence to transition into the conclusion.</aside>
+      </section>
+
       <!-- 21 · synthesis · 0:55 -->
       <section class="editorial-slide" data-section="Synthesis">
         <div class="kicker">Synthesis</div>
@@ -279,6 +278,12 @@
           <aside class="notes">
             Timing: 0:34. Finish on the common lesson. Total planned time: about 15:00. During questions, press down for backup slides.
           </aside>
+        </section>
+
+        <section class="backup-slide editorial-slide">
+          <div class="kicker">Backup · training schedule</div>
+          <h2>Alternate simulation and real observations.</h2>
+          <div class="training-algorithm"><article class="training-lane sleep-lane"><strong>SLEEP</strong><div class="algorithm-steps"><span>sample θ</span><b>→</b><span>forward model</span><b>→</b><span>simulated photometry</span><b>→</b><span>recover θ</span></div></article><article class="training-lane wake-lane"><strong>WAKE</strong><div class="algorithm-steps"><span>real photometry</span><b>→</b><span>propose θ draws</span><b>→</b><span>likelihood weights</span><b>→</b><span>update both models</span></div></article></div><div class="algorithm-purpose"><span><strong>Sleep</strong> maintains proposal coverage.</span><span><strong>Wake</strong> learns from the observed catalogue.</span></div><aside class="notes">Backup only. Sleep supplies known parameters without labels for real observations and maintains broad proposal coverage. Wake tests posterior draws against real photometry and updates both the posterior network and the population prior. This schedule mitigates poor-proposal feedback but is not a proof against collapse.</aside>
         </section>
 
         <section class="backup-slide">

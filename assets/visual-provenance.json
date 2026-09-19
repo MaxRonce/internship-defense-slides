@@ -123,6 +123,24 @@
       "synthetic": "Dense seed-2/seed-3 draw mixture with randomized finite-sample rank correction",
       "observed_source": "/home/maxime/src/DSPS/outputs/comparisons/feniks_popcosmos_recap_v1/popcosmos_dense_chain_calibration/pit_coverage_128/redshift_pit_values.parquet",
       "meaning": "Uniform density is calibrated; U-shape indicates under-dispersion; skew indicates directional bias."
+    },
+    {
+      "asset": "aion1-use-uncertainty.png",
+      "source": "Tame-Narvaez et al. 2026, arXiv:2606.07771",
+      "url": "https://arxiv.org/abs/2606.07771",
+      "crop": "First page, title through upper abstract."
+    },
+    {
+      "asset": "aion1-use-audit.png",
+      "source": "Kendiukhov 2026, arXiv:2608.23626",
+      "url": "https://arxiv.org/abs/2608.23626",
+      "crop": "First page, title through upper abstract."
+    },
+    {
+      "asset": "aion1-use-dinospec.png",
+      "source": "Lastufka et al. 2026, arXiv:2608.30503",
+      "url": "https://arxiv.org/abs/2608.30503",
+      "crop": "First page, title through upper abstract."
     }
   ],
   "notes": "Crops preserve logged intensities. No generated galaxy images."

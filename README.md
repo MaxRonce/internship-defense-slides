@@ -5,7 +5,7 @@ Paris-Saclay / CosmoStat / Polymathic AI, supervised by François Lanusse and
 Samuel Farrens.
 
 The presentation is designed for a 15-minute talk followed by 15 minutes of
-questions. It contains 29 main slides and five vertical backup slides.
+questions. It contains 29 main slides and six vertical backup slides.
 
 ## View the slides
 
@@ -47,10 +47,10 @@ npm run notes
 | Movement | Slides | Target |
 | --- | ---: | ---: |
 | Problem and two-route plan | 1-3 | 1:15 |
-| Physics-constrained inference | 4-18 | 7:24 |
-| Data-driven representations | 19-27 | 5:13 |
+| Physics-constrained inference | 4-17 | 6:51 |
+| Data-driven representations | 18-27 | 5:38 |
 | Synthesis and takeaways | 28-29 | 0:59 |
-| Speaking buffer | | 0:09 |
+| Speaking buffer | | 0:17 |
 
 Numerical claims and visual assets retain source and provenance information in
 the slide captions and `assets/visual-provenance.json`. Posterior distributions

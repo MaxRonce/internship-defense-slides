@@ -921,6 +921,25 @@
 .reveal .redshift-contrast span:last-child { border-color:var(--teal); background:var(--teal-soft); }
 .reveal .redshift-contrast b { display:block; margin-bottom:2px; color:var(--ink); font-size:15px; }
 
+.reveal .rivalry-slide { position:relative; }
+.reveal .rivalry-joke,
+.reveal .rivalry-serious { position:absolute; left:80px; top:78px; width:1120px; }
+.reveal .rivalry-joke { display:grid; grid-template-columns:390px 1fr; gap:22px 58px; align-items:center; }
+.reveal .rivalry-joke h2 { grid-column:1 / 3; margin:0; text-align:center; }
+.reveal .rivalry-joke img { width:390px; height:390px; border:1px solid var(--rule); background:#fff; object-fit:contain; }
+.reveal .rivalry-joke strong { color:var(--gold); font-family:var(--serif); font-size:54px; line-height:1.14; }
+.reveal .rivalry-serious { top:190px; padding:34px 42px; border-left:7px solid var(--blue); background:var(--blue-soft); box-sizing:border-box; }
+.reveal .rivalry-serious h2 { margin:0 0 24px; color:var(--blue); }
+.reveal .rivalry-serious p { margin:0; font-size:30px; line-height:1.4; }
+
+.reveal .aion-paper-wall { display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; margin-top:22px; }
+.reveal .aion-paper-wall article { padding:14px 14px 18px; border:1px solid var(--rule); border-top:5px solid var(--blue); background:var(--panel); }
+.reveal .aion-paper-wall article:nth-child(2) { border-top-color:var(--gold); }
+.reveal .aion-paper-wall article:nth-child(3) { border-top-color:var(--teal); }
+.reveal .aion-paper-wall img { display:block; width:100%; height:300px; background:#fff; object-fit:contain; }
+.reveal .aion-paper-wall strong { display:block; margin:15px 0 5px; font-family:var(--serif); font-size:23px; }
+.reveal .aion-paper-wall span { display:block; color:var(--ink-soft); font-size:17px; line-height:1.25; }
+
 .reveal .foundation-layout { display: grid; grid-template-columns: 820px 1fr; gap: 32px; margin-top: 22px; align-items: stretch; }
 .reveal .foundation-layout > img { width: 820px; height: 455px; border: 1px solid var(--rule); background: #fff; object-fit: contain; }
 .reveal .foundation-message { display: flex; padding: 26px 24px; border-top: 6px solid var(--teal); background: var(--panel); flex-direction: column; justify-content: center; }

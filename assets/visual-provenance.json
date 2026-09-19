@@ -1,0 +1,129 @@
+{
+  "sources": [
+    {
+      "asset": "galaxy-0-*",
+      "run": "maxronce-universit-de-tours/galactiktok/wqhax11n",
+      "file": "media/images/reconstructions/mmu_hsc_pdr3_dud_22.5_115875_75d50582f90c9a68043c.png",
+      "index": 7,
+      "crop": "r band, 96x96 pixels; rows input, reconstruction, residual",
+      "sha256": "75d50582f90c9a68043cbf8ab4c83b2c17aa4b60058c794936b0bd26e1788c1a"
+    },
+    {
+      "asset": "galaxy-1-*",
+      "run": "maxronce-universit-de-tours/galactiktok/wqhax11n",
+      "file": "media/images/reconstructions/mmu_legacysurvey_dr10_south_21_115875_f45d6ace6af5ac5be1c8.png",
+      "index": 7,
+      "crop": "r band, 96x96 pixels; rows input, reconstruction, residual",
+      "sha256": "f45d6ace6af5ac5be1c81d009bf0748270e7e68f0516ca08c4053c40a1565b85"
+    },
+    {
+      "asset": "galaxy-2-*",
+      "run": "maxronce-universit-de-tours/galactiktok/wqhax11n",
+      "file": "media/images/reconstructions/mmu_ssl_legacysurvey_north_115875_214aef10fb6fea4e0b7e.png",
+      "index": 6,
+      "crop": "r band, 96x96 pixels; rows input, reconstruction, residual",
+      "sha256": "214aef10fb6fea4e0b7e00762a26e284f748a924088baeb65b7efae5001dd689"
+    },
+    {
+      "asset": "aion1-overview.png; aion-galaxy.png",
+      "source": "Parker et al. 2025, arXiv:2510.17960, Figure 1",
+      "page": 2,
+      "note": "Figure crop and illustrative galaxy detail; not a W&B validation object."
+    },
+    {
+      "asset": "aion1-sdss-spectrum.png; aion1-desi-spectrum.png",
+      "source": "Parker et al. 2025, arXiv:2510.17960, Figure 2",
+      "page": 4,
+      "note": "Survey-specific spectrum icons cropped from the published AION-1 pre-training input diagram."
+    },
+    {
+      "asset": "galaxy-10x-0-*",
+      "run": "maxronce-universit-de-tours/galactiktok/fy947o8d",
+      "file": "media/images/reconstructions/cosmos_25402_61cdd42e75330b11e332.png",
+      "step": 25402,
+      "crop": "third displayed COSMOS band; 160x160; rows input and reconstruction",
+      "sha256": "61cdd42e75330b11e332ce5409e11bd2bba70e2ea4ed4e1d42f3700488842f55"
+    },
+    {
+      "asset": "galaxy-10x-1-*",
+      "run": "maxronce-universit-de-tours/galactiktok/fy947o8d",
+      "file": "media/images/reconstructions/cosmos_25402_a57ab8d515b6640699e7.png",
+      "step": 25402,
+      "crop": "third displayed COSMOS band; 160x160; rows input and reconstruction",
+      "sha256": "a57ab8d515b6640699e7be5957e4277d02613d9d5d00712283d286f424ec6242"
+    },
+    {
+      "asset": "galaxy-10x-2-*",
+      "run": "maxronce-universit-de-tours/galactiktok/fy947o8d",
+      "file": "media/images/reconstructions/cosmos_25402_019f03199644405ed25e.png",
+      "step": 25402,
+      "crop": "third displayed COSMOS band; 160x160; rows input and reconstruction",
+      "sha256": "019f03199644405ed25e9ce1c775699d69dde20abf5bbf035feeac55faf5961d"
+    },
+    {
+      "asset": "hsc-dud-10x-0-*",
+      "run": "maxronce-universit-de-tours/galactiktok/fy947o8d",
+      "file": "media/images/reconstructions/mmu_hsc_pdr3_dud_22.5_25402_5b1cb65d269a66e4cee7.png",
+      "step": 25402,
+      "crop": "third displayed HSC PDR3 DUD band; 160x160; rows input and reconstruction",
+      "sha256": "5b1cb65d269a66e4cee799b7ced3a052d8af722c2021e84e2186d1f284ff93a6"
+    },
+    {
+      "asset": "hsc-dud-10x-1-*",
+      "run": "maxronce-universit-de-tours/galactiktok/fy947o8d",
+      "file": "media/images/reconstructions/mmu_hsc_pdr3_dud_22.5_25402_77c666ba0896786a3e9e.png",
+      "step": 25402,
+      "crop": "third displayed HSC PDR3 DUD band; 160x160; rows input and reconstruction",
+      "sha256": "77c666ba0896786a3e9e67e6a576159962723e519c6513eb32ff3939b66e0440"
+    },
+    {
+      "asset": "hsc-dud-10x-2-*",
+      "run": "maxronce-universit-de-tours/galactiktok/fy947o8d",
+      "file": "media/images/reconstructions/mmu_hsc_pdr3_dud_22.5_25402_d5065cfad1174b90c052.png",
+      "step": 25402,
+      "crop": "third displayed HSC PDR3 DUD band; 160x160; rows input and reconstruction",
+      "sha256": "d5065cfad1174b90c052e362da7ccd4a10f2e4c2431e91f694e74ed6701c67b3"
+    },
+    {
+      "asset": "hsc-modality.png",
+      "run": "maxronce-universit-de-tours/galactiktok/fy947o8d",
+      "file": "media/images/reconstructions/mmu_hsc_pdr3_dud_22.5_25402_5b1cb65d269a66e4cee7.png",
+      "step": 25402,
+      "crop": "third displayed band, input row; 160x160",
+      "sha256": "5b1cb65d269a66e4cee799b7ced3a052d8af722c2021e84e2186d1f284ff93a6"
+    },
+    {
+      "asset": "legacy-modality.png",
+      "run": "maxronce-universit-de-tours/galactiktok/fy947o8d",
+      "file": "media/images/reconstructions/mmu_legacysurvey_dr10_south_21_25402_4b46d5fc41f7bfb1d5f1.png",
+      "step": 25402,
+      "crop": "third displayed band, input row; 160x160",
+      "sha256": "4b46d5fc41f7bfb1d5f1b678bf8f4fa5a4fbc9dac0734607efd79fb441df8f13"
+    },
+    {
+      "asset": "photometry-only.png; one-filter.png",
+      "source": "/home/maxime/src/DSPS/outputs/reports/feniks_forward_model_explorer_payload.json",
+      "object": 4618,
+      "note": "Synthetic illustration of photometric inputs; no observed spectrum shown."
+    },
+    {
+      "asset": "degeneracy-example.png",
+      "source": "Analytical schematic around DSPS payload object 4618; not two fitted galaxies",
+      "definition": "Opposite within-band perturbations with zero band integral; displayed photometry is identical."
+    },
+    {
+      "asset": "redshift-three-way.png",
+      "source": "/home/maxime/src/DSPS/outputs/runs/popcosmos_native15d_rws_k8_array_20260803_162536/redshift_only_comparison_v1/paired_public_specz_objects.parquet",
+      "synthetic": "Equal draw-level seed-2/seed-3 mixture; median only for displayed estimator.",
+      "observed_n": 1395,
+      "synthetic_n": 5000
+    },
+    {
+      "asset": "pit-three-way.png",
+      "synthetic": "Dense seed-2/seed-3 draw mixture with randomized finite-sample rank correction",
+      "observed_source": "/home/maxime/src/DSPS/outputs/comparisons/feniks_popcosmos_recap_v1/popcosmos_dense_chain_calibration/pit_coverage_128/redshift_pit_values.parquet",
+      "meaning": "Uniform density is calibrated; U-shape indicates under-dispersion; skew indicates directional bias."
+    }
+  ],
+  "notes": "Crops preserve logged intensities. No generated galaxy images."
+}

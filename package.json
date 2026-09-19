@@ -1,0 +1,15 @@
+{
+  "name": "internship-defense-slides",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reveal.js internship defense deck editable with Lectern",
+  "scripts": {
+    "edit": "lectern index.html",
+    "serve": "lectern index.html --no-open",
+    "notes": "lectern notes index.html",
+    "guide": "lectern guide"
+  },
+  "devDependencies": {
+    "lectern-editor": "2.1.0"
+  }
+}

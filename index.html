@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>From Survey Observations to Physical Knowledge</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="reveal/dist/reset.css">
+  <link rel="stylesheet" href="reveal/dist/reveal.css">
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- 1 · title · 0:20 -->
+      <section class="title-slide" data-section="Opening">
+        <div class="title-copy">
+          <p class="kicker">Master's internship defense · 25 September 2026</p>
+          <h1>Inferring galaxy properties<br>from their <span class="accent">light</span></h1>
+          <p class="sub">Physics-constrained inference and multimodal representation learning</p>
+          <div class="title-details">
+            <p class="meta"><strong>Maxime RONCERAY</strong><br>CEA Paris-Saclay · CosmoStat · Polymathic AI</p>
+            <p class="supervisors"><span>Supervisors</span> François Lanusse · Samuel Farrens</p>
+          </div>
+        </div>
+        <div class="logo-band" aria-label="Institution logos">
+          <img class="logo-tours" src="assets/universite-tours.png" alt="Université de Tours">
+          <img class="logo-cea" src="assets/cea.jpg" alt="CEA">
+          <img class="logo-cosmostat" src="assets/cosmostat.png" alt="CosmoStat">
+          <span class="logo-polymathic"><img src="assets/polymathic-logo.svg" alt="Polymathic AI"></span>
+        </div><aside class="notes">
+          Timing: 0:20. Open with the scientific question, not the project names. Thank supervisors François Lanusse and Samuel Farrens, then say that the talk compares two ways of turning indirect astronomical measurements into representations useful for inference.
+        </aside>
+      </section>
+
+      <!-- 2 · scientific problem · 0:30 -->
+      <section class="editorial-slide" data-section="Scientific problem">
+        <div class="kicker">The scientific problem</div>
+        <h2>From observed light to physical properties.</h2>
+        <div class="galaxy-diversity"><img src="assets/hsc-dud-10x-2-input.png" alt="Galaxy observed in the HSC deep field"><img src="assets/galaxy-10x-1-input.png" alt="Compact galaxy observed in COSMOS"><img src="assets/galaxy-10x-2-input.png" alt="Elongated galaxy observed in COSMOS"></div>
+        <div class="light-question"><div><span>WHAT TELESCOPES RECORD</span><strong>light: images, spectra and photometry</strong></div><b>→</b><div><span>WHAT WE WANT TO INFER</span><strong>redshift · mass · dust · star-formation history</strong></div></div>
+        <p class="editorial-takeaway">Different histories of gas and stars leave different signatures in that light.</p><p class="source-line">Real HSC and COSMOS validation crops · 10×10×6 run fy947o8d · step 25402.</p><aside class="notes">Timing: 0:30. Read the slide from left to right: telescopes record light, while the scientific goal is to infer the physical properties that produced it. The examples are real HSC and COSMOS crops from the final 10x10x6 W&amp;B validation, not generated images.</aside>
+      </section>
+
+      <!-- 3 · plan · 0:25 -->
+      <section class="editorial-slide" data-section="Two approaches">
+        <div class="kicker">Two complementary approaches</div>
+        <h2>Two ways to learn about galaxies.</h2>
+        <div class="approach-cards"><article><span class="large-index">01</span><h3>Learning with physics</h3><p>Explain measured light with an analytic galaxy model.</p><strong>Physical parameters + posterior uncertainty</strong></article><article><span class="large-index">02</span><h3>Learning from observations</h3><p>Pre-train reusable representations across surveys.</p><strong>Embeddings + downstream tasks</strong></article></div><aside class="notes">Timing: 0:25. Two complementary approaches, not competing estimates of the same object.</aside>
+      </section>
+
+      <!-- 4 · section break · 0:08 -->
+      <section class="break physics-break" data-section="Physical inference">
+        <p class="section-index">01 · PHYSICS-CONSTRAINED</p>
+        <p class="big">Use physics to explain the observed light.</p>
+        <p class="sub">Inferring galaxy properties from photometric measurements</p><aside class="notes">Timing: 0:08. Pause. Now define the data and the forward model before introducing inference.</aside>
+      </section>
+
+      <!-- 5 · real spectrum · 0:35 -->
+      <section class="editorial-slide">
+        <div class="kicker">What we observe</div>
+        <h2>Photometry measures how much light falls in each band.</h2>
+        <img class="wide-visual photometry-visual" src="assets/photometry-only.png" alt="Synthetic example: one measured flux and uncertainty in each photometric band"><p class="source-line">Synthetic illustration from the report; observed COSMOS provides the same kind of input.</p>
+        <div hidden="" data-ai-note="done" style="position:absolute;left:591px;top:600px;width:300px;"><p data-by="author">la légende ne sert a rien</p><p data-by="ai">La légende redondante sous le graphique a été retirée.</p></div><aside class="notes">Timing: 0:25. Each point is one broadband flux; the error bar is its measurement uncertainty. It is not an observed spectrum sampled at isolated wavelengths. The next slides introduce the physical spectrum and the forward model that connects it to these measurements.</aside>
+      </section>
+
+      <!-- 6 · real filters and photometry · 0:50 -->
+      <section class="editorial-slide">
+        <div class="kicker">From a spectrum to one measurement</div>
+        <h2>A filter selects part of the spectrum.</h2>
+        <div class="filter-comparison"><div><img src="assets/spectrum-filter-overlay.png" alt="A DSPS spectrum on a logarithmic scale with the Rubin r filter superimposed"><p><strong>One filter</strong> selects one wavelength range.</p></div><div class="fragment fade-up" data-fragment-index="0"><img src="assets/spectrum-all-filters-compact.png" alt="The same synthetic spectrum with all survey filters and photometric measurements"><p><strong>All filters</strong> produce the observed photometric vector.</p></div></div><p class="editorial-takeaway">Integrating through each filter turns a complete spectrum into a handful of fluxes.</p><p class="source-line">DSPS synthetic object 4618 · relative visual normalization · logarithmic brightness scale.</p><aside class="notes">Timing: 0:38. Begin with the left panel: one filter on a log-scaled DSPS spectrum. Advance once to reveal the compact summary with the full filter set and resulting photometry. Fluxes use a relative visual normalization here; repeating the physical integration for every filter yields the observed vector.</aside>
+      </section>
+
+      <!-- 7 · actual data and inverse problem · 0:45 -->
+      <section class="editorial-slide">
+        <div class="kicker">The forward model</div>
+        <h2>Physics connects parameters to the light we measure.</h2>
+        <div class="forward-chain"><div><span>1</span><strong>Physical parameters</strong><small>mass · dust · history · redshift</small></div><b>→</b><div><span>2</span><strong>Forward model</strong><small>analytic galaxy physics</small></div><b>→</b><div><span>3</span><strong>Spectrum</strong><small>light across wavelength</small></div><b>→</b><div><span>4</span><strong>Filter integration</strong><small>one integral per band</small></div><b>→</b><div><span>5</span><strong>Predicted photometry</strong><small>compare with observations</small></div></div><aside class="notes">Timing: 0:20. Read the forward chain from left to right. The forward model turns physical parameters into a full spectrum. Integrating through every survey filter gives predicted photometry, which can be compared with the measured fluxes and errors.</aside>
+      </section>
+
+      <!-- 8 · forward model · 0:45 -->
+      <section class="editorial-slide">
+        <div class="kicker">The inverse problem</div>
+        <h2>A degenerate inverse problem.</h2>
+        <div class="inverse-problem"><div class="observed-side"><span>OBSERVED</span><strong>photometry y ± σ</strong><img src="assets/photometry-only.png" alt="Observed photometric fluxes and uncertainties"></div><div class="inverse-arrow"><strong>?</strong><span>find compatible parameters</span></div><div class="theta-stack"><div><strong>θ</strong><small>different metallicity</small></div><div><strong>θ</strong><small>more dust</small></div><div><strong>θ</strong><small>different redshift</small></div></div></div><p class="inverse-warning">The analytic model is many-to-one: several parameter vectors can predict the same photometry.</p><aside class="notes">Timing: 0:20. The observed side is fixed. We search for physical parameter vectors whose forward predictions reproduce it. Different metallicities, dust contents and redshifts can compensate and yield the same broadband measurements.</aside>
+      </section>
+<section class="editorial-slide">
+        <div class="kicker">Why inference is ambiguous</div>
+        <h2>Different spectra can give the same band fluxes.</h2>
+        <img class="wide-visual" src="assets/degeneracy-example.png" alt="Schematic spectra with identical integrals within six idealized filters"><p class="editorial-takeaway">Broad bands erase information between measurements.</p><p class="source-line">Pedagogical schematic: equal integrals in idealized top-hat bands; not two fitted DSPS galaxies.</p><aside class="notes">Timing: 0:25. The baseline shape comes from the DSPS synthetic example. Opposite within-band perturbations create two illustrative spectra with equal band integrals. They are not two fitted galaxies.</aside>
+      </section>
+
+      <!-- 9 · Bayesian inference · 1:00 -->
+      <section class="editorial-slide">
+        <div class="kicker">Bayesian inference</div>
+        <h2>Bayes' rule: data fit × population assumptions.</h2>
+        <div class="bayes-map" aria-label="Posterior proportional to likelihood times population prior"><strong>p(θ | y)</strong><b>∝</b><strong>p(y | θ)</strong><b>×</b><strong>p<sub>η</sub>(θ)</strong></div><div class="bayes-labels"><article class="posterior-label fragment"><h3>Posterior</h3><p>Which explanations remain plausible for this galaxy?</p></article><article class="likelihood-label fragment"><h3>Likelihood</h3><p>Do the predicted fluxes reproduce its measurements?</p><small>Easy to compute with the forward model.</small></article><article class="prior-label fragment"><h3>Population prior</h3><p>How common are these parameters among galaxies?</p><small>Must be well defined.</small></article></div><aside class="notes">Timing: 0:30. Define theta and y, then read posterior, likelihood and prior. The likelihood is straightforward to evaluate with the forward model. The population prior must be well defined because it changes the posterior.</aside>
+      </section>
+<section class="editorial-slide">
+        <div class="kicker">Two learning objectives</div>
+        <h2>Objectives</h2>
+        <div class="goal-board"><article><span>ACROSS THE CATALOGUE</span><strong>Learn the population prior</strong><p>Which physical properties are common among galaxies?</p></article><article><span>FOR EACH GALAXY</span><strong>Infer its posterior</strong><p>Which explanations remain plausible for this observation?</p></article></div>
+        <div class="inference-cost"><strong>Exact inference for every galaxy is expensive.</strong><b>→</b><span>Amortized variational inference learns one reusable posterior model.</span></div><aside class="notes">Timing: 0:30. Distinguish a distribution across the population from uncertainty about one object. Exact per-object inference is expensive, so one neural posterior is amortized across the catalogue. Selection must still be handled when relating the catalogue to the parent population; details in backup.</aside>
+      </section>
+
+      <!-- 10 · architecture and likelihood · 0:55 -->
+      <section class="editorial-slide">
+        <div class="kicker">Fast inference</div>
+        <h2>A neural posterior with a physical decoder.</h2>
+        <div class="architecture-wrap revised-architecture"><img class="architecture-figure" src="assets/dsps-architecture.png" alt="Conditional flow, learned population prior and DSPS physical decoder architecture"><div class="arch-highlight arch-observed fragment" data-fragment-index="0"></div><div class="arch-highlight arch-posterior fragment" data-fragment-index="1"></div><div class="arch-highlight arch-prediction fragment" data-fragment-index="2"></div><div class="architecture-callouts"><span>observed fluxes + errors</span><span>posterior draws</span><span>predicted spectrum + fluxes</span></div></div>
+        <div hidden="" data-ai-note="done" style="position:absolute;left:529px;top:640px;width:300px;"><p data-by="author">les cadres sont mal cadrés. Pas besoin du cadre encoder</p><p data-by="ai">Le cadre Encoder a été supprimé.</p>
+        </div>
+        <div hidden="" data-ai-note="done" style="position:absolute;left:980px;top:90px;width:300px;"><p data-by="author">les cadres ne sont ABSOLUMENT pas cohérents et centrés</p><p data-by="ai">Les grands cadres sont remplacés par trois cadres calibrés sur les zones exactes du schéma : flux observés, variables physiques échantillonnées et décodeur physique.</p></div><aside class="notes">Timing: 0:35. Advance through the three tightly framed regions: measured fluxes and errors enter the encoder; the posterior draw contains the physical variables x and theta; DSPS decodes them into a spectrum and predicted fluxes.</aside>
+      </section>
+
+      <!-- 11 · RWS · 0:50 -->
+      <section class="editorial-slide">
+        <div class="kicker">Methodology</div>
+        <h2>Alternate simulation and real observations.</h2>
+        <div class="training-algorithm"><article class="training-lane sleep-lane"><strong>SLEEP</strong><div class="algorithm-steps"><span>sample θ</span><b>→</b><span>forward model</span><b>→</b><span>simulated photometry</span><b>→</b><span>recover θ</span></div></article><article class="training-lane wake-lane"><strong>WAKE</strong><div class="algorithm-steps"><span>real photometry</span><b>→</b><span>propose θ draws</span><b>→</b><span>likelihood weights</span><b>→</b><span>update both models</span></div></article></div><div class="algorithm-purpose"><span><strong>Sleep</strong> maintains proposal coverage.</span><span><strong>Wake</strong> learns from the observed catalogue.</span></div><aside class="notes">Timing: 0:35. Sleep supplies known parameters without labels for real observations and maintains broad proposal coverage. Wake tests posterior draws against real photometry and updates both the posterior network and the population prior. This schedule mitigates poor-proposal feedback but is not a proof against collapse.</aside>
+      </section>
+
+      <!-- 12 · visual result example · 0:35 -->
+      <section>
+        <div class="kicker">Example result</div>
+        <h2>The inferred spectrum follows the true spectrum.</h2>
+        <img class="fig result-example-figure" src="assets/sed-reconstruction.png" alt="True DSPS spectrum in black and inferred posterior spectrum in blue">
+        <div class="visual-result-key"><span><i class="key-true"></i>true spectrum</span><span><i class="key-inferred"></i>inferred spectrum</span><span><i class="key-interval"></i>68% posterior interval</span></div>
+        <div class="evaluation-question fragment fade-up">
+          <strong>A good-looking spectrum is not enough.</strong>
+          <span>1 · Is redshift accurate?</span>
+          <span>2 · Is the posterior calibrated?</span>
+        </div><aside class="notes">Timing: 0:30. The black curve is the true DSPS spectrum; blue is the posterior median and the band is the 68% interval. It looks convincing, but visual reconstruction is not enough. The scientific tests are now stated explicitly: redshift accuracy and posterior calibration.</aside>
+      </section>
+
+      <!-- 13 · evaluation datasets · 0:35 -->
+      <section class="editorial-slide">
+        <div class="kicker">Evaluation data</div>
+        <h2>Two datasets</h2>
+        <div class="dataset-showcase"><article><span>CONTROLLED TEST</span><strong>Synthetic galaxies</strong><div class="dataset-number">15D</div><p>Every physical parameter is known.</p><small>Recovery + posterior calibration</small></article><div class="versus">+</div><article><span>REAL-SKY TEST</span><strong>Observed COSMOS</strong><div class="dataset-number">1,395</div><p>Matched galaxies with spectroscopic redshifts.</p><small>RWS-26 + published Pop-COSMOS</small></article></div><div class="benchmark-question">Why do we want to beat Pop-COSMOS?</div><p class="source-line">Pop-COSMOS: Alsing et al. (2024), ApJS 274, 12; Thorp et al. (2024), ApJ 975, 145.</p><aside class="notes">Timing: 0:30. Synthetic data are the controlled test because every latent truth is available. The real-sky benchmark uses the same 1,395 matched COSMOS galaxies for RWS-26 and Pop-COSMOS. End only on the question, then advance to the humorous transition.</aside>
+      </section>
+
+      <section class="editorial-slide rivalry-slide">
+        <div class="kicker">Benchmark rivalry</div>
+        <h2>They come from Cambridge. <span class="uk-flag" aria-label="United Kingdom">🇬🇧</span></h2>
+        <div class="rivalry-reveal fragment fade-up" data-fragment-index="0"><img src="assets/state-affair.png" alt="Historical French collage with Napoleon, Joan of Arc and maps"><strong>This is a matter of state.</strong></div>
+        <div class="rivalry-answer fragment fade-up" data-fragment-index="1"><b>More seriously:</b> a strong published population-level baseline on the same field and matched galaxies.</div>
+
+        <div hidden="" data-ai-note="done" style="position:absolute;left:752px;top:144px;width:300px;"><p data-by="author">retire le sous titre</p><p data-by="ai">Le sous-titre sous Cambridge a été retiré.</p></div><aside class="notes">Timing: 0:18. First show Cambridge and the flag. Advance once for the supplied historical collage and joke, then once more for the serious answer: Pop-COSMOS is a strong published population-level baseline on the same field and matched galaxies.</aside>
+      </section>
+
+      <!-- 14 · DSPS results · 1:00 -->
+      <section class="editorial-slide">
+        <div class="kicker">Point accuracy versus posterior calibration</div>
+        <h2>Point accuracy ≠ posterior calibration.</h2>
+        <div class="redshift-diagnostic-stack"><div><span>POINT ESTIMATES · POSTERIOR MEDIANS</span><img src="assets/redshift-three-way.png" alt="Reference redshift versus posterior median redshift for synthetic RWS, COSMOS RWS and Pop-COSMOS"></div><div><span>FULL POSTERIORS · PIT</span><img src="assets/pit-three-way-no-titles.png" alt="Probability integral transform histograms for synthetic RWS, COSMOS RWS and Pop-COSMOS"></div></div>
+        <div class="redshift-contrast"><span><b>Synthetic</b>wider point scatter · calibrated uncertainty</span><span><b>Observed COSMOS</b>tighter medians · overconfident posteriors</span></div>
+        <aside class="notes">Timing: 1:00. We evaluate whether inference recovers an interesting physical parameter; here redshift, because spectroscopic references are available. We ask two distinct questions. Top: for this pointwise diagnostic only, summarize each posterior by its median and compare it with the reference redshift; points near the diagonal are accurate. Bottom: keep the full posterior and compute its PIT, the fraction of posterior probability below the reference redshift. Across a catalogue, calibrated posteriors produce a flat PIT histogram. Peaks at both edges mean the references fall in the tails too often, so the intervals are too narrow and the model is overconfident. Synthetic point estimates are more dispersed but their PIT is nearly flat. The observed medians are tighter, while both observed PIT histograms are U-shaped. The synthetic and observed datasets are not a controlled difficulty comparison.</aside>
+      </section>
+<section class="editorial-slide">
+        <div class="kicker">Calibration summary · MIRA</div>
+        <h2>Are the redshift uncertainties trustworthy?</h2>
+        <div class="calibration-new"><img class="calibration-visual" src="assets/redshift-calibration.png" alt="MIRA scores: synthetic 0.668, COSMOS RWS 0.630, Pop-COSMOS 0.622"><div><h3>MIRA</h3><p><strong>A metric for posterior calibration quality.</strong></p><p>Do posterior regions contain the reference as often as expected?</p><p class="accent">Calibrated target: 2/3</p></div></div><p class="editorial-takeaway">Synthetic redshift is near target. Both observed results fall below it.</p><p class="source-line">MIRA: Sharief et al. (2026), arXiv:2605.02014. This score alone does not certify absence of directional bias.</p><aside class="notes">Timing: 0:40. MIRA is a metric for posterior calibration quality across many objects, not accuracy of one median. Below target can reflect overconfidence or shifts; it does not isolate their direction or cause. Redshift calibration does not establish calibration of the joint 15D posterior.</aside>
+      </section>
+
+      <!-- 15 · section break · 0:08 -->
+      <section class="break data-break" data-section="Learned representations">
+        <p class="section-index">02 · DATA-DRIVEN</p>
+        <p class="big">Learn reusable representations directly from survey data.</p>
+        <p class="sub">Continuous tokenization + multimodal foundation modelling</p><aside class="notes">Timing: 0:08. Pivot from interpretable latent variables to representations learned from the surveys themselves.</aside>
+      </section>
+
+<section class="editorial-slide">
+        <div class="kicker">Foundation models</div>
+        <h2>Train once, adapt to many tasks.</h2>
+        <div class="foundation-layout"><img src="assets/bommasani-foundation-model.png" alt="Bommasani et al. diagram: multimodal data trains one foundation model that is adapted to many downstream tasks"><div class="foundation-message"><span>PRE-TRAIN</span><strong>One shared model learns from large, diverse datasets.</strong><span>ADAPT</span><strong>The same representation supports many downstream tasks.</strong></div></div>
+        <p class="source-line">Bommasani et al. (2021), “On the Opportunities and Risks of Foundation Models”, Fig. 2.</p><aside class="notes">Timing: 0:35. A foundation model is trained once on large and diverse data, before any single final task is chosen. It learns a reusable representation. The same model can then be adapted to several downstream tasks with much smaller labelled datasets. In astronomy, the inputs become survey observations and the tasks become redshift, morphology, or other physical-property predictions.</aside>
+      </section>
+
+<section class="editorial-slide">
+        <div class="kicker">A multimodal foundation model</div>
+        <h2><span class="fragment strike" data-fragment-index="0">AION-1</span> <span class="fragment" data-fragment-index="0">→ AION-2</span></h2>
+        <img class="paper-visual" src="assets/aion1-overview.png" alt="Original AION-1 Figure 1: tokenization, shared transformer and downstream tasks"><p class="source-line">AION-1 overview: Parker et al. (2025), Fig. 1, arXiv:2510.17960. The figure describes AION-1.</p>
+        <div hidden="" data-ai-note="done" style="position:absolute;left:497px;top:111px;width:300px;"><p data-by="author">Avant cette slide prend une slide foundation model avec l'image Bommasani et al. 202 des foundation model ou j'expliquerais ce que c'est</p><p data-by="ai">Une slide dédiée est ajoutée juste avant, avec la figure 2 de Bommasani et al. et une lecture simple “pré-entraîner une fois, adapter à plusieurs tâches”.</p></div><aside class="notes">Timing: 0:35. This is the astronomical version of the previous idea. AION-1 tokenizes several observing modalities, processes them with a shared encoder, then supports multiple downstream tasks. Advance once to introduce AION-2. Do not claim this published diagram is the AION-2 architecture.</aside>
+      </section>
+      <section class="editorial-slide">
+        <div class="kicker">Second part of my internship</div>
+        <h2>AION-2 improvements</h2>
+        <div class="survey-roadmap"><div class="survey-row current-surveys"><span class="survey-row-label">AUGUST RUN</span><article><strong>HSC</strong><small>images</small></article><article><strong>Legacy Survey</strong><small>images</small></article><article><strong>DESI</strong><small>spectra</small></article><article><strong>SDSS</strong><small>spectra</small></article></div><div class="survey-row next-surveys"><span class="survey-row-label">NEXT</span><article class="fragment fade-up" data-fragment-index="0"><strong>Euclid Q1</strong><small>images</small></article><article class="fragment fade-up" data-fragment-index="1"><strong>LSST DP2</strong><small>images</small></article><article class="fragment fade-up" data-fragment-index="2"><strong>COSMOS</strong><small>images</small></article></div></div><div class="aion-improvements"><span><b>More surveys</b> broader image coverage</span><span><b>Continuous tokens</b> instead of discrete identifiers</span></div><aside class="notes">Timing: 0:42. Start with the four surveys in the August run: HSC and Legacy images, DESI and SDSS spectra. Then reveal Euclid Q1, LSST DP2 and COSMOS one by one. Conclude with the two AION-2 improvements: broader survey coverage and continuous tokens rather than AION-1's discrete token identifiers.</aside>
+      </section>
+
+      <!-- 17 · AION pipeline · 0:55 -->
+      <section class="editorial-slide">
+        <div class="kicker">Preparing the data</div>
+        <h2>Tokenization changes the representation, not the catalogue.</h2>
+        <div class="token-definition"><b>For a language model,</b> a token is a small numerical unit of input, often part of a word. <b>For AION,</b> each token summarizes part of an astronomical observation.</div>
+        <div class="token-before-after"><article class="raw-corpus"><span>BEFORE</span><strong>100 TB</strong><h3>Raw survey observations</h3><p>images · spectra</p><small>all catalogued objects</small></article><div class="tokenize-arrow"><b>→</b><span>tokenize once</span></div><article class="token-corpus"><span>AFTER</span><strong>same objects</strong><h3>N tokens × 6 floats</h3><p>one compact numerical sequence per observation</p><small>stored in the data lake</small></article></div><div class="token-examples"><span>images <b>100 × 6</b></span><span>DESI <b>245 × 6</b></span><span>SDSS <b>147 × 6</b></span></div>
+        <div hidden="" data-ai-note="done" style="position:absolute;left:313px;top:446px;width:300px;"><p data-by="author">retire le "instrument specific array"</p><p data-by="ai">La mention “instrument-specific arrays” est retirée.</p></div>
+        <div hidden="" data-ai-note="done" style="position:absolute;left:933px;top:188px;width:300px;"><p data-by="author">"store in data lake" plutot</p><p data-by="ai">Le libellé devient “stored in the data lake”.</p></div>
+        <div hidden="" data-ai-note="done" style="position:absolute;left:450px;top:88px;width:300px;"><p data-by="author">Il faut changer cette slide. AU dessus des deux bloc je veux une petite explication de ce qu'est un token pour les LLM.<br>Et sur les bloc rend les un peu plus petit</p><p data-by="ai">Une définition comparative LLM/AION est ajoutée au-dessus du schéma et les deux blocs sont réduits pour préserver de l’air autour de l’explication.</p></div><aside class="notes">Timing: 0:38. Start from the familiar language-model idea: a token is a small numerical unit presented to the model, often a word fragment. AION applies the same interface to astronomy: each token summarizes part of an image or spectrum. The catalogue still contains the same observations, but they are encoded once as compact sequences of six-dimensional vectors and stored in the data lake.</aside>
+      </section>
+
+      <!-- 18 · image tokenizer · 0:55 -->
+      <section class="editorial-slide">
+        <div class="kicker">My contribution · image tokenizer</div>
+        <h2>Choosing the image bottleneck</h2>
+        <div class="reconstruction-gallery"><span></span><strong>Image A</strong><strong>Image B</strong><strong>Image C</strong><span>Input</span><img class="galaxy-tile" src="assets/hsc-dud-10x-0-input.png" alt="HSC PDR3 DUD input galaxy from 10 by 10 by 6 W&amp;B run"><img class="galaxy-tile" src="assets/hsc-dud-10x-1-input.png" alt="HSC PDR3 DUD input galaxy from 10 by 10 by 6 W&amp;B run"><img class="galaxy-tile" src="assets/hsc-dud-10x-2-input.png" alt="HSC PDR3 DUD input galaxy from 10 by 10 by 6 W&amp;B run"><span>Reconstruction</span><img class="galaxy-tile" src="assets/hsc-dud-10x-0-reconstruction.png" alt="Reconstructed HSC PDR3 DUD galaxy from 10 by 10 by 6 W&amp;B run"><img class="galaxy-tile" src="assets/hsc-dud-10x-1-reconstruction.png" alt="Reconstructed HSC PDR3 DUD galaxy from 10 by 10 by 6 W&amp;B run"><img class="galaxy-tile" src="assets/hsc-dud-10x-2-reconstruction.png" alt="Reconstructed HSC PDR3 DUD galaxy from 10 by 10 by 6 W&amp;B run"></div><p class="bottleneck-line">160 × 160 multi-band pixels → <strong>100 continuous 6D tokens</strong> → reconstruction</p><p class="editorial-takeaway">Preserve appearance and physical information, with a sequence compact enough for AION.</p><p class="source-line">HSC PDR3 DUD · real W&amp;B validation crops · run fy947o8d · step 25402 · matched logged stretch.</p><aside class="notes">Timing: 0:45. These are three real HSC PDR3 DUD validation examples from the final 10x10x6 comparison run. Each 160 by 160 multiband observation becomes 100 continuous six-dimensional tokens. The examples retain the logged input/reconstruction stretch. Visual quality is one criterion; physical and morphology preservation need separate tests.</aside>
+      </section>
+
+      <!-- 19 · training · 0:45 -->
+      <section>
+        <div class="kicker">First production run</div>
+        <h2>The first AION-2 run · August 2026</h2>
+        <div class="training-kpis">
+          <div><strong>199 M</strong><span>parameters</span></div>
+          <div><strong>64 H100</strong><span>16 Jean-Zay nodes</span></div>
+          <div><strong>100k</strong><span>optimisation steps</span></div>
+          <div><strong>4 surveys</strong><span>images + spectra</span></div>
+        </div>
+        <img class="fig training-figure" src="assets/aion-training.png" alt="AION-2 global and modality-resolved training losses">
+        <div class="evidence-warning fragment fade-up"><strong>Training loss proves optimisation.</strong><span>Scientific value requires frozen-encoder downstream probes.</span></div><aside class="notes">
+          Timing: 0:40. The global objective decreases. Mention the different modality behaviours, including the DESI curve, without over-interpreting it. This plot establishes that the baseline trained, not that the embedding is scientifically useful. Source: report Sec. "August production run".
+        </aside>
+      </section>
+
+      <!-- 20 · downstream · 0:55 -->
+      <section class="editorial-slide">
+        <div class="kicker">Evaluating the representation</div>
+        <h2>Can embeddings recover known galaxy properties?</h2>
+        <div class="editorial-flow"><div><span>LABELLED GALAXIES</span><strong>Images / spectra</strong></div><b class="flow-arrow">→</b><div><span>TOKENIZE</span><strong>AION inputs</strong></div><b class="flow-arrow">→</b><div><span>FROZEN AION</span><strong>Embeddings</strong></div><b class="flow-arrow">→</b><div><span>SUPERVISED PROBE</span><strong>Recovered properties</strong></div></div>
+        <div hidden="" data-ai-note="done" style="position:absolute;left:82px;top:570px;width:300px;"><p data-by="author">retire la phrase du bas. Et le bloc du bas en général. Il faut alléger la slide</p><p data-by="ai">Le bloc inférieur sur les labels et la phrase de comparaison sont retirés ; seul le pipeline d’évaluation reste à l’écran.</p></div><aside class="notes">Timing: 0:25. Tokenizers and AION produce embeddings. A supervised probe learns to recover a known property while AION remains frozen. Testing on held-out galaxies tells us whether that information is accessible in the representation.</aside>
+      </section>
+<section>
+        <div class="kicker">Information retained</div>
+        <h2>What can a frozen AION encoder recover?</h2>
+        <div class="probe-comparison">
+          <article class="redshift-probe fragment fade-up" data-fragment-index="0" role="img" aria-label="AION-2 redshift R squared is 0.373 after mean pooling and 0.988 with cross-attention">
+            <span class="probe-kicker">AION-2 · DESI REDSHIFT</span>
+            <h3>Does the embedding preserve redshift?</h3>
+            <div class="score-row"><span>Mean pooling</span><div><i style="width:37.3%"></i></div><strong>0.373</strong></div>
+            <div class="score-row"><span>Cross-attention</span><div><i style="width:98.8%"></i></div><strong>0.988</strong></div>
+            <small>R<sup>2</sup>: 1 means all object-to-object variation is recovered.</small>
+          </article>
+          <article class="morphology-probe fragment fade-up" data-fragment-index="1" role="img" aria-label="Published AION-1-L morphology accuracy is 87.2 percent and the best AION-2 result is 70.48 percent under different evaluation protocols">
+            <span class="probe-kicker">GALAXY10 MORPHOLOGY</span>
+            <h3>Can image tokens identify morphology?</h3>
+            <div class="score-row"><span>AION-1-L · published</span><div><i style="width:87.2%"></i></div><strong>87.2%</strong></div>
+            <div class="score-row"><span>AION-2 · best run</span><div><i style="width:70.48%"></i></div><strong>70.48%</strong></div>
+            <small>Accuracy: fraction of correctly classified test galaxies.</small>
+          </article>
+        </div>
+        <p class="probe-source">AION-1-L: Parker et al. (2025), published Galaxy10 result · AION-2: internship evaluation, first scale run.</p>
+        <div hidden="" data-ai-note="done" style="position:absolute;left:478px;top:640px;width:300px;"><p data-by="author">Fait apparaitre les bloc 1 par 1&nbsp; et retirer le "context..."</p><p data-by="ai">Les résultats redshift et morphologie apparaissent maintenant successivement ; le bandeau “Context, not a controlled benchmark” est retiré.</p></div><aside class="notes">
+          Timing: 0:45. First reveal the redshift result. With the frozen AION-2 encoder, mean pooling recovers little variation, while cross-attention reaches R squared 0.988 on 11,363 spatially held-out DESI galaxies. Then reveal morphology: the published AION-1-L paper reports 87.2 percent and the best AION-2 run reports 70.48 percent. Mention orally that these morphology values use different samples and protocols.
+        </aside>
+      </section>
+
+      <!-- 21 · synthesis · 0:55 -->
+      <section class="editorial-slide" data-section="Synthesis">
+        <div class="kicker">Synthesis</div>
+        <h2>Two routes from light to useful representations.</h2>
+        <div class="synthesis-lanes"><div class="synthesis-source">observed<br><strong>light</strong></div><article><span>PHYSICS-CONSTRAINED</span><strong>posterior over physical parameters</strong><p>Interpretable by construction · explicit uncertainty</p></article><article><span>DATA-DRIVEN</span><strong>learned multimodal embeddings</strong><p>Reusable across tasks · information tested by probes</p></article></div>
+        <div hidden="" data-ai-note="done" style="position:absolute;left:535px;top:562px;width:300px;"><p data-by="author">retire la scientific question je vais broder la conclusion</p><p data-by="ai">La question scientifique au bas de la slide est retirée afin de laisser la conclusion se faire oralement.</p></div><aside class="notes">Timing: 0:25. Both routes begin with observed light. One representation is physically named by construction and returns a posterior; the other is learned from cross-survey data and tested through downstream probes. Use the remaining space to conclude freely.</aside>
+      </section>
+
+      <!-- 22 · conclusion + vertical Q&A backups · 0:40 -->
+      <section data-section="Questions">
+        <section class="closing-slide">
+          <div class="kicker">Takeaways</div>
+          <h2>Representations become scientific only when their limits are measurable.</h2>
+          <ol class="takeaway-list">
+            <li><span>01</span><p><strong>Physical route</strong><br>Fast joint posteriors and spectra; uncertainty still needs improvement beyond redshift.</p></li>
+            <li><span>02</span><p><strong>Data-driven route</strong><br>A 100 TB multimodal pipeline and a trained 199 M parameter baseline with useful frozen embeddings.</p></li>
+            <li><span>03</span><p><strong>Common lesson</strong><br>Optimisation and reconstruction are evidence, but calibration and downstream tests decide scientific utility.</p></li>
+          </ol>
+          <div class="questions-line">Questions?</div>
+          <p class="meta closing-meta">Maxime Ronceray · CEA Paris-Saclay / CosmoStat</p>
+          <aside class="notes">
+            Timing: 0:34. Finish on the common lesson. Total planned time: about 15:00. During questions, press down for backup slides.
+          </aside>
+        </section>
+
+        <section class="backup-slide">
+        <div class="kicker">Backup · methodology</div>
+        <h2>Importance-weighted population learning</h2>
+        <div class="rws-loop didactic-loop">
+          <div class="loop-step proposal">
+            <span class="step-label">1 · PROPOSE</span>
+            <strong>Draw several candidate θ</strong>
+            <small>from the current approximate posterior q<sub>φ</sub>(θ | y)</small>
+          </div>
+          <div class="loop-arrow">→</div>
+          <div class="loop-step simulate">
+            <span class="step-label">2 · PREDICT</span>
+            <strong>Generate a spectrum and fluxes</strong>
+            <small>run each candidate θ through the DSPS physical model</small>
+          </div>
+          <div class="loop-arrow">→</div>
+          <div class="loop-step weight">
+            <span class="step-label">3 · REWEIGHT</span>
+            <strong>Keep plausible explanations</strong>
+            <small>favour candidates that fit the fluxes and the galaxy population</small>
+          </div>
+        </div>
+        <p class="weight-explanation fragment fade-up"><b>candidate weight</b> ∝ <strong>agreement with measured fluxes</strong> × <strong>population plausibility</strong> ÷ <strong>proposal probability</strong></p>
+        <p class="rws-outcome fragment fade-up"><b>Learn from the weighted distribution:</b> improve both the fast posterior proposal and the population prior.</p>
+
+        <aside class="notes">Backup only. Weights are proportional to likelihood times prior divided by proposal density; normalized over draws. Keep the weighted distribution, not a best candidate. Population learning also accounts for catalogue selection as specified in the report. Sleep remains active as wake learning increases.</aside>
+      </section>
+
+        <section class="backup-slide editorial-slide">
+          <div class="kicker">Backup · training objective</div>
+          <h2>Score candidates, then learn from their weights.</h2>
+          <div class="objective-stack"><article><div><span>1 · LIKELIHOOD</span><strong>Student-t with ν = 2</strong><p>Robustly compare each predicted and measured band.</p></div><img src="assets/student-density.png" alt="Student t probability density with two degrees of freedom"></article><article><div><span>2 · RWS LOSS</span><strong>Weighted posterior learning</strong><p>Train the proposal on all weighted candidate draws.</p></div><img src="assets/wake-loss.png" alt="Importance-weighted wake loss for the conditional flow"></article></div><p class="source-line">Report Eqs. observation-likelihood and wake-losses. The population loss adds the analogous weighted term and selection correction.</p>
+          <div hidden="" data-ai-note="done" style="position:absolute;left:407px;top:339px;width:300px;"><p data-by="author">Est-ce que cette slide n'irait pas en appendix</p><p data-by="ai">Oui : la fonction objectif a été retirée du parcours principal et déplacée dans les slides de backup sous Questions.</p></div><aside class="notes">Backup only. The Student-t likelihood scores flux agreement in each band; its product enters the importance weight. The wake loss trains q_phi using normalized candidate weights held fixed by stop-gradient. The population flow has an analogous weighted loss plus the selection-normalization term. These are distributions of draws, never a best-candidate target.</aside>
+        </section>
+
+        <!-- 22v2 · backup: calibration -->
+        <section class="backup-slide">
+          <div class="kicker">Backup · DSPS calibration</div>
+          <h2>Joint calibration changes with the coordinates tested.</h2>
+          <div class="backup-calibration">
+            <img class="fig" src="assets/redshift-calibration.png" alt="MIRA redshift calibration scores">
+            <table>
+              <thead><tr><th>Coordinates tested jointly</th><th>MIRA</th></tr></thead>
+              <tbody>
+                <tr><td>Redshift</td><td><strong>0.668</strong></td></tr>
+                <tr><td>Physical parameters (5D)</td><td>0.642</td></tr>
+                <tr><td>SFH contrasts (10D)</td><td>0.692</td></tr>
+                <tr><td>Full latent space (15D)</td><td>0.691</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="takeaway compact">A calibrated redshift marginal does not imply a calibrated 15D posterior.</p>
+          <aside class="notes">Source: report Table 2 and Fig. 8. The calibrated MIRA reference is 2/3.</aside>
+        </section>
+
+        <!-- 22v3 · backup: morphology -->
+        <section class="backup-slide">
+          <div class="kicker">Backup · image tokenizer</div>
+          <h2>No bottleneck wins on every morphology metric.</h2>
+          <img class="fig backup-wide-figure" src="assets/morphology-distributions.png" alt="Ellipticity and size distributions for image tokenizer bottlenecks">
+          <div class="result-row two-results">
+            <div class="result good"><span>3 x 3 x 6 production</span><strong>ellipticity WD 0.019</strong><small>compact sequence</small></div>
+            <div class="result caution"><span>4 x 4 x 5 alternative</span><strong>size WD 0.127 arcsec</strong><small>ellipticity WD rises to 0.051</small></div>
+          </div>
+          <aside class="notes">Measured on the same 10,000 HSC r-band images. WD: Wasserstein distance, lower is better.</aside>
+        </section>
+
+        <!-- 22v4 · backup: inventory -->
+        <section class="backup-slide">
+          <div class="kicker">Backup · AION-2 inventory</div>
+          <h2>Production tokens remain independent, versioned survey tables.</h2>
+          <table class="inventory-table">
+            <thead><tr><th>Survey</th><th>Tokenizer</th><th>Token shape</th><th>Rows</th></tr></thead>
+            <tbody>
+              <tr><td>HSC</td><td>ImageTokenizer</td><td>9 x 6</td><td>474,954</td></tr>
+              <tr><td>Legacy Survey South</td><td>ImageTokenizer</td><td>9 x 6</td><td>123,159,232</td></tr>
+              <tr><td>DESI</td><td>SpectrumTokenizer</td><td>245 x 6</td><td>1,126,441</td></tr>
+              <tr><td>SDSS</td><td>SpectrumTokenizer</td><td>147 x 6</td><td>806,176</td></tr>
+            </tbody>
+          </table>
+          <p class="takeaway compact">Crossmatches store row references; they do not duplicate token arrays into one giant table.</p>
+          <aside class="notes">Source: report Table 4, "Jean-Zay token tables".</aside>
+        </section>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="reveal/dist/reveal.js"></script>
+  <script src="reveal/plugin/math/math.js"></script>
+  <script src="reveal/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1280, height: 720, margin: 0.02,
+      center: false, hash: true, transition: 'fade',
+      controls: false, progress: true, slideNumber: 'h',
+      pdfSeparateFragments: false,
+      katex: { local: 'reveal/katex' },
+      plugins: [ RevealMath.KaTeX, RevealNotes ],
+    });
+  </script>
+</body>
+</html>

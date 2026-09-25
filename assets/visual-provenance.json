@@ -109,7 +109,8 @@
     {
       "asset": "degeneracy-example.png",
       "source": "Analytical schematic around DSPS payload object 4618; not two fitted galaxies",
-      "definition": "Opposite within-band perturbations with zero band integral; displayed photometry is identical."
+      "definition": "Opposite within-band perturbations with zero band integral; displayed photometry is identical.",
+      "presentation_adjustment": "Photometry markers and error bars enlarged for visibility; spectra and integrated values unchanged."
     },
     {
       "asset": "redshift-three-way.png",
@@ -141,7 +142,106 @@
       "source": "Lastufka et al. 2026, arXiv:2608.30503",
       "url": "https://arxiv.org/abs/2608.30503",
       "crop": "First page, title through upper abstract."
+    },
+    {
+      "asset": "lsst-throughput-curves.png",
+      "source": "Rubin Observatory LSST throughputs baseline v1.9",
+      "url": "https://github.com/lsst/throughputs/tree/main/baseline",
+      "files": "total_u.dat, total_g.dat, total_r.dat, total_i.dat, total_z.dat, total_y.dat",
+      "note": "Full-system response at airmass 1.2, including atmosphere, mirrors, lenses, filter, and detector."
+    },
+    {
+      "asset": "rubin-camera-cutaway.jpg",
+      "source": "SLAC / LSST Project Office",
+      "url": "https://www.lsst.org/gallery/camera",
+      "note": "Official LSSTCam cutaway rendering; used without alteration."
+    },
+    {
+      "asset": "dsps-architecture-revised.svg",
+      "source": "User-supplied Ressources/Schema DSPS.svg, 2026-09-25",
+      "note": "Updated DSPS inference diagram with a blue physical decoder and the JAX logo."
+    },
+    {
+      "asset": "lola-autoencoder-architecture.png",
+      "source": "InternshipReport figures/results/lola_autoencoder_architecture.pdf; Rozet et al. 2025, arXiv:2507.02608",
+      "url": "https://arxiv.org/abs/2507.02608",
+      "page": 1,
+      "rasterization": "150 dpi, full figure, aspect ratio preserved",
+      "note": "Encoder-decoder reference architecture; slide annotation highlights the continuous latent bottleneck adapted for ImageTokenizer."
+    },
+    {
+      "asset": "aion-training-global.png",
+      "source": "InternshipReport figures/results/aion_production_training.pdf",
+      "crop": "Global training-objective panel only; original aspect ratio preserved",
+      "note": "Logged optimisation objective, not a held-out validation or downstream metric."
+    },
+    {
+      "asset": "jean-zay-machine-cc0.jpg",
+      "source": "Clemcloum8, Wikimedia Commons",
+      "url": "https://commons.wikimedia.org/wiki/File:Supercalculateur_Jean_Zay_panneau_d%27information.jpg",
+      "license": "CC0 1.0",
+      "crop": "Machine graphic from the public Jean Zay information panel",
+      "note": "Depicts the Jean Zay system as shown on its public information panel; not a photograph of the server hall."
+    },
+    {
+      "asset": "galaxy-0-residual.png (slide display)",
+      "source": "ImageTokenizer W&B run maxronce-universit-de-tours/galactiktok/wqhax11n",
+      "presentation_adjustment": "Contrast and brightness increased with CSS to reveal the residual structure",
+      "note": "Qualitative display only; not on the input-intensity scale."
+    },
+    {
+      "asset": "survey-subaru.jpg",
+      "source": "National Astronomical Observatory of Japan, Subaru Telescope Gallery",
+      "url": "https://subarutelescope.org/en/gallery/facility/2026/01/14/3643.html",
+      "credit": "Dr. Vera Maria Passegger / NAOJ",
+      "note": "Subaru Telescope enclosure at sunset on Maunakea; representative of the imaging facility used by HSC. Resized for the slide thumbnail."
+    },
+    {
+      "asset": "survey-blanco.jpg",
+      "source": "NSF NOIRLab, Blanco 4-meter Telescope",
+      "url": "https://noirlab.edu/public/images/noirlab2513a/",
+      "credit": "CTIO/NOIRLab/NSF/AURA/P. Horálek (Institute of Physics in Opava)",
+      "license": "CC BY 4.0",
+      "survey_context": "https://datalab.noirlab.edu/data/legacy-surveys",
+      "note": "Visual shorthand for the southern DECaLS component; the full Legacy Surveys combine Blanco, Mayall, and Bok observations."
+    },
+    {
+      "asset": "survey-mayall-desi.jpeg",
+      "source": "NSF NOIRLab / DESI collaboration",
+      "url": "https://noirlab.edu/public/images/noirlab2512q/",
+      "credit": "DESI Collaboration/DOE/KPNO/NOIRLab/NSF/AURA/M. Sargent (Berkeley Lab)",
+      "license": "CC BY 4.0",
+      "note": "Wide interior view of the Mayall 4-meter telescope at Kitt Peak, on which DESI is mounted. Resized for the slide thumbnail."
+    },
+    {
+      "asset": "survey-sdss-telescope.jpg",
+      "source": "Sloan Digital Sky Survey image gallery",
+      "url": "https://sdss.org/science/image-gallery/",
+      "credit": "SDSS",
+      "note": "Sloan Foundation 2.5-meter telescope at Apache Point Observatory."
+    },
+    {
+      "asset": "survey-euclid.jpg",
+      "source": "European Space Agency, Euclid's sunny side",
+      "url": "https://www.esa.int/ESA_Multimedia/Images/2023/06/Euclid_s_sunny_side",
+      "credit": "ESA / ATG medialab",
+      "note": "Artist's impression of the Euclid spacecraft."
+    },
+    {
+      "asset": "survey-rubin-telescope.jpg",
+      "source": "NSF NOIRLab, Rubin Observatory Under the Milky Way",
+      "url": "https://noirlab.edu/public/images/noirlab2409b/",
+      "credit": "Rubin Observatory/NOIRLab/NSF/AURA/H. Stockebrand",
+      "license": "CC BY 4.0",
+      "note": "Vera C. Rubin Observatory beneath the Milky Way. Displayed as a 2:1 landscape thumbnail with the observatory and sky retained in frame."
+    },
+    {
+      "asset": "survey-cosmos-hubble.jpg",
+      "source": "NASA Science, Hubble Space Telescope (HST)",
+      "url": "https://science.nasa.gov/image-detail/hubble-space-telescope-hst/",
+      "credit": "NASA",
+      "note": "Hubble above Earth; its ACS camera produced the original core COSMOS imaging. COSMOS is a multi-wavelength field observed by many facilities, not a single telescope."
     }
   ],
-  "notes": "Crops preserve logged intensities. No generated galaxy images."
+  "notes": "Crops preserve logged intensities except the explicitly contrast-enhanced residual display. No generated galaxy images."
 }

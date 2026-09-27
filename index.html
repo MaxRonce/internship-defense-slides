@@ -40,7 +40,7 @@
         <h2>From observed light to physical properties.</h2>
         <div class="galaxy-diversity"><img src="assets/hsc-dud-10x-2-input.png" alt="Galaxy observed in the HSC deep field"><img src="assets/galaxy-10x-1-input.png" alt="Compact galaxy observed in COSMOS"><img src="assets/galaxy-10x-2-input.png" alt="Elongated galaxy observed in COSMOS"></div>
         <div class="light-question"><div><span>WHAT TELESCOPES RECORD</span><strong>light: images, spectra and photometry</strong></div><b>→</b><div><span>WHAT WE WANT TO INFER</span><strong>redshift · mass · dust · star-formation history</strong></div></div>
-        <p class="editorial-takeaway">Different histories of gas and stars leave different signatures in that light.</p><p class="source-line">Real HSC and COSMOS validation crops · 10×10×6 run fy947o8d · step 25402.</p><aside class="notes">Timing: 0:30. Read the slide from left to right: telescopes record light, while the scientific goal is to infer the physical properties that produced it. The examples are real HSC and COSMOS crops from the final 10x10x6 W&amp;B validation, not generated images.</aside>
+        <p class="editorial-takeaway">Different histories of gas and stars leave different signatures in that light.</p><p class="source-line">HSC · COSMOS.</p><aside class="notes">Timing: 0:30. Read the slide from left to right: telescopes record light, while the scientific goal is to infer the physical properties that produced it. The examples are real HSC and COSMOS crops from the final 10x10x6 W&amp;B validation, not generated images.</aside>
       </section>
 
       <!-- 3 · plan · 0:25 -->
@@ -64,7 +64,7 @@
         <img class="wide-visual photometry-visual" src="assets/photometry-only.png" alt="Synthetic photometric fluxes and uncertainties. Point colours group Rubin LSST, Euclid, and Roman filters.">
         <div class="photometry-survey-key" aria-label="Point colour identifies survey family"><span><i class="survey-rubin"></i>Rubin / LSST</span><span><i class="survey-euclid"></i>Euclid</span><span><i class="survey-roman"></i>Roman</span></div>
         <p class="photometry-colour-note">The colours identify the survey family, not the galaxy's intrinsic colour.</p>
-        <p class="source-line">Synthetic DSPS example · one flux and uncertainty per filter band; displayed point colours group survey families.</p>
+        <p class="source-line">DSPS · synthetic photometry.</p>
         <aside class="notes">Timing: 0:22. Each point is one broadband flux with an error bar. Colours group Rubin/LSST, Euclid and Roman filters; they are not intrinsic galaxy colours. Each flux is integrated over a broad response range, not sampled at one wavelength.</aside>
       </section>
 
@@ -87,7 +87,7 @@
           </figure>
         </div>
         <div hidden="" data-ai-note="done" style="position:absolute;left:600px;top:560px;width:300px;"><p data-by="author">“Transmittance of the light” -> talk about telescopes; we can use a beautiful image of the LSST filters, like the example.</p><p data-by="ai">Le vocabulaire distingue la transmission du filtre de la réponse complète du système. La caméra Rubin LSSTCam est montrée avec ses six courbes de réponse système et l'intégration qui produit un flux par bande.</p></div>
-        <p class="source-line">Photo: Hannah Pollek / SLAC National Accelerator Laboratory · Curves: DSPS synthetic object 4618, relative visual normalization.</p>
+        <p class="source-line">Photo: Hannah Pollek / SLAC · Photometry: DSPS.</p>
         <aside class="notes">Timing: 0:45. Start with the physical Rubin LSSTCam r-band filter and explain what it is. First advance: show the old spectrum with one superimposed filter. Say: “We integrate the spectrum through the filter and obtain one photometric measurement.” The physical calculation uses the full band response, including the atmosphere, optics and detector. Second advance: show the old full-spectrum view with all survey filters and photometric points, and explain that repeating the integration produces the photometric vector. The plots show one synthetic galaxy spectrum, not several galaxy spectra; brightness is logarithmic and visually normalized. Photo source: https://www6.slac.stanford.edu/media/20210312lsstrfilterlange-46jpg</aside>
       </section>
 
@@ -107,7 +107,7 @@
 <section class="editorial-slide">
         <div class="kicker">Why inference is ambiguous</div>
         <h2>Different spectra can give the same band fluxes.</h2>
-        <img class="wide-visual degeneracy-visual" src="assets/degeneracy-example.png" alt="Two spectra differ within each band, while enlarged photometry points with error bars mark their identical band-integrated fluxes"><p class="editorial-takeaway">Broad bands erase information between measurements.</p><div hidden="" data-ai-note="done" style="position:absolute;left:790px;top:420px;width:300px;"><p data-by="author">Slide 9: Difficult to see the points of photometry.</p><p data-by="ai">Les marqueurs photométriques et leurs barres d'erreur ont été agrandis pour ressortir clairement devant les deux spectres.</p></div><p class="source-line">Pedagogical schematic: equal integrals in idealized top-hat bands; not two fitted DSPS galaxies.</p><aside class="notes">Timing: 0:20. The curves differ inside each wavelength band, but enlarged photometry markers show identical integrated fluxes and errors. Broadband data cannot recover the detail between bands; we need a distribution over plausible explanations.</aside>
+        <img class="wide-visual degeneracy-visual" src="assets/degeneracy-example.png" alt="Two spectra differ within each band, while enlarged photometry points with error bars mark their identical band-integrated fluxes"><p class="editorial-takeaway">Broad bands erase information between measurements.</p><div hidden="" data-ai-note="done" style="position:absolute;left:790px;top:420px;width:300px;"><p data-by="author">Slide 9: Difficult to see the points of photometry.</p><p data-by="ai">Les marqueurs photométriques et leurs barres d'erreur ont été agrandis pour ressortir clairement devant les deux spectres.</p></div><p class="source-line">Illustrative spectra and photometry.</p><aside class="notes">Timing: 0:20. The curves differ inside each wavelength band, but enlarged photometry markers show identical integrated fluxes and errors. Broadband data cannot recover the detail between bands; we need a distribution over plausible explanations.</aside>
       </section>
 
       <!-- 9 · Bayesian inference · 1:00 -->
@@ -149,7 +149,7 @@
       <section class="editorial-slide">
         <div class="kicker">Evaluation data</div>
         <h2>Two datasets, two kinds of evidence.</h2>
-        <div class="dataset-showcase"><article><span>CONTROLLED · SYNTHETIC</span><strong>Known physical truth</strong><div class="synthetic-recipe"><span>sample parameters<br><b>Diffsky</b></span><i>→</i><span>simulate photometry<br><b>DSPS</b></span><i>→</i><span>add survey noise<br>and selection</span></div><p>Truth is saved before noise and the observed r-band cut.</p><small>40,000 train · 5,000 validation · 5,000 test galaxies</small></article><div class="versus">+</div><article><span>REAL SKY · COSMOS</span><strong>Independent redshift references</strong><div class="dataset-number">1,395</div><p>Observed 26-band photometry with spectroscopic redshifts.</p><small>Same matched galaxies for RWS-26 and published Pop-COSMOS</small></article></div><p class="source-line">Synthetic process: Diffsky parameters → DSPS photometry → Gaussian survey noise + observed r-band selection. Pop-COSMOS: Alsing et al. (2024); Thorp et al. (2024).</p><aside class="notes">Timing: 0:35. Synthetic does not mean an old survey or a rendered image: sample physical galaxy parameters from the Diffsky population, generate photometry with DSPS, add survey noise, and apply the r-band catalogue selection. We retain the true parameters, which lets us test recovery and posterior calibration. COSMOS is the real-observation benchmark; 1,395 galaxies have spectroscopic reference redshifts and are matched object by object to the published Pop-COSMOS results.</aside>
+        <div class="dataset-showcase"><article><span>CONTROLLED · SYNTHETIC</span><strong>Known physical truth</strong><div class="synthetic-recipe"><span>sample parameters<br><b>Diffsky</b></span><i>→</i><span>simulate photometry<br><b>DSPS</b></span><i>→</i><span>add survey noise<br>and selection</span></div><p>Truth is saved before noise and the observed r-band cut.</p><small>40,000 train · 5,000 validation · 5,000 test galaxies</small></article><div class="versus">+</div><article><span>REAL SKY · COSMOS</span><strong>Independent redshift references</strong><div class="dataset-number">1,395</div><p>Observed 26-band photometry with spectroscopic redshifts.</p><small>Same matched galaxies for RWS-26 and published Pop-COSMOS</small></article></div><p class="source-line">Diffsky · DSPS · Pop-COSMOS: Alsing et al. (2024); Thorp et al. (2024).</p><aside class="notes">Timing: 0:35. Synthetic does not mean an old survey or a rendered image: sample physical galaxy parameters from the Diffsky population, generate photometry with DSPS, add survey noise, and apply the r-band catalogue selection. We retain the true parameters, which lets us test recovery and posterior calibration. COSMOS is the real-observation benchmark; 1,395 galaxies have spectroscopic reference redshifts and are matched object by object to the published Pop-COSMOS results.</aside>
       </section>
 
       <section class="editorial-slide rivalry-slide">
@@ -171,7 +171,7 @@
 <section class="editorial-slide">
         <div class="kicker">Calibration summary · MIRA</div>
         <h2>Are the redshift uncertainties trustworthy?</h2>
-        <div class="calibration-new"><img class="calibration-visual" src="assets/redshift-calibration.png" alt="MIRA scores: synthetic 0.668, COSMOS RWS 0.630, Pop-COSMOS 0.622"><div><h3>MIRA</h3><p><strong>A metric for posterior calibration quality.</strong></p><p>Do posterior regions contain the reference as often as expected?</p><p class="accent">Calibrated target: 2/3</p></div></div><p class="editorial-takeaway">Synthetic redshift is near target. Both observed results fall below it.</p><p class="source-line">MIRA: Sharief et al. (2026), arXiv:2605.02014. This score alone does not certify absence of directional bias.</p><aside class="notes">Timing: 0:37. MIRA summarises posterior calibration across objects, not the accuracy of one median. A low score may reflect overconfidence or shifts; it does not isolate the cause. Redshift calibration does not establish calibration of the joint 15D posterior.</aside>
+        <div class="calibration-new"><img class="calibration-visual" src="assets/redshift-calibration.png" alt="MIRA scores: synthetic 0.668, COSMOS RWS 0.630, Pop-COSMOS 0.622"><div><h3>MIRA</h3><p><strong>A metric for posterior calibration quality.</strong></p><p>Do posterior regions contain the reference as often as expected?</p><p class="accent">Calibrated target: 2/3</p></div></div><p class="editorial-takeaway">Synthetic redshift is near target. Both observed results fall below it.</p><p class="source-line">MIRA: Sharief et al. (2026), arXiv:2605.02014.</p><aside class="notes">Timing: 0:37. MIRA summarises posterior calibration across objects, not the accuracy of one median. A low score may reflect overconfidence or shifts; it does not isolate the cause. Redshift calibration does not establish calibration of the joint 15D posterior.</aside>
       </section>
 
       <section class="editorial-slide physical-recap">
@@ -193,13 +193,13 @@
         <div class="kicker">Foundation models</div>
         <h2>Train once, adapt to many tasks.</h2>
         <div class="foundation-layout"><img src="assets/bommasani-foundation-model.png" alt="Bommasani et al. diagram: multimodal data trains one foundation model that is adapted to many downstream tasks"><div class="foundation-message"><span>PRE-TRAIN</span><strong>One shared model learns from large, diverse datasets.</strong><span>ADAPT</span><strong>The same representation supports many downstream tasks.</strong></div></div>
-        <p class="source-line">Bommasani et al. (2021), “On the Opportunities and Risks of Foundation Models”, Fig. 2.</p><aside class="notes">Timing: 0:35. A foundation model is trained once on large and diverse data, before any single final task is chosen. It learns a reusable representation. The same model can then be adapted to several downstream tasks with much smaller labelled datasets. In astronomy, the inputs become survey observations and the tasks become redshift, morphology, or other physical-property predictions.</aside>
+        <p class="source-line">Bommasani et al. (2021), Fig. 2.</p><aside class="notes">Timing: 0:35. A foundation model is trained once on large and diverse data, before any single final task is chosen. It learns a reusable representation. The same model can then be adapted to several downstream tasks with much smaller labelled datasets. In astronomy, the inputs become survey observations and the tasks become redshift, morphology, or other physical-property predictions.</aside>
       </section>
 
 <section class="editorial-slide">
         <div class="kicker">A multimodal foundation model</div>
         <h2><span class="fragment strike" data-fragment-index="0">AION-1</span> <span class="fragment" data-fragment-index="0">→ AION-2</span></h2>
-        <img class="paper-visual" src="assets/aion1-overview.png" alt="Original AION-1 Figure 1: tokenization, shared transformer and downstream tasks"><p class="source-line">AION-1 overview: Parker et al. (2025), Fig. 1, arXiv:2510.17960. The figure describes AION-1.</p>
+        <img class="paper-visual" src="assets/aion1-overview.png" alt="Original AION-1 Figure 1: tokenization, shared transformer and downstream tasks"><p class="source-line">AION-1: Parker et al. (2025), Fig. 1.</p>
         <div hidden="" data-ai-note="done" style="position:absolute;left:497px;top:111px;width:300px;"><p data-by="author">Avant cette slide prend une slide foundation model avec l'image Bommasani et al. 202 des foundation model ou j'expliquerais ce que c'est</p><p data-by="ai">Une slide dédiée est ajoutée juste avant, avec la figure 2 de Bommasani et al. et une lecture simple “pré-entraîner une fois, adapter à plusieurs tâches”.</p></div><aside class="notes">Timing: 0:35. This is the astronomical version of the previous idea. AION-1 tokenizes several observing modalities, processes them with a shared encoder, then supports multiple downstream tasks. Advance once to introduce AION-2. Do not claim this published diagram is the AION-2 architecture.</aside>
       </section>
       <section class="editorial-slide">
@@ -231,7 +231,7 @@
         <h2>~100 TB of survey data → ~300 GB of prepared token tables.</h2>
         <div class="token-definition"><b>For a language model,</b> a token is a small numerical unit of input, often part of a word. <b>For AION,</b> each token summarizes part of an astronomical observation.</div>
         <div class="token-before-after"><article class="raw-corpus"><span>PUBLIC MULTIMODAL UNIVERSE</span><strong>~100 TB</strong><h3>Survey archive</h3><p>images · spectra</p><small>Large public input collection</small></article><div class="tokenize-arrow"><b>→</b><span>prepare<br>once</span></div><article class="token-corpus"><span>PROCESSED SURVEYS</span><strong>~300 GB</strong><h3>Token tables</h3><p>compact numerical sequences</p><small>versioned and stored in the data lake</small></article></div><div class="token-examples"><span>image <b>~100 × 6</b></span><span>DESI spectrum <b>245 × 6</b></span><span>SDSS spectrum <b>147 × 6</b></span></div>
-        <p class="source-line">MMU scale: Audenaert et al. (2024). Approximate public archive (~100 TB) → prepared tables (~300 GB) for processed surveys; different scopes, not a lossless compression ratio.</p>
+        <p class="source-line">Multimodal Universe: Audenaert et al. (2024).</p>
         <div hidden="" data-ai-note="done" style="position:absolute;left:313px;top:446px;width:300px;"><p data-by="author">retire le "instrument specific array"</p><p data-by="ai">La mention “instrument-specific arrays” est retirée.</p></div>
         <div hidden="" data-ai-note="done" style="position:absolute;left:933px;top:188px;width:300px;"><p data-by="author">"store in data lake" plutot</p><p data-by="ai">Le libellé devient “stored in the data lake”.</p></div>
         <div hidden="" data-ai-note="done" style="position:absolute;left:450px;top:88px;width:300px;"><p data-by="author">Il faut changer cette slide. AU dessus des deux bloc je veux une petite explication de ce qu'est un token pour les LLM.<br>Et sur les bloc rend les un peu plus petit</p><p data-by="ai">Une définition comparative LLM/AION est ajoutée au-dessus du schéma et les deux blocs sont réduits pour préserver de l’air autour de l’explication.</p></div><aside class="notes">Timing: 0:38. Start from the familiar language-model idea: a token is a small numerical unit presented to the model, often a word fragment. AION applies the same interface to astronomy: each token summarizes part of an image or spectrum. The approximate scale is about 100 TB for the public MMU archive and about 300 GB for the prepared token tables in this processed-survey pipeline. These figures cover different scopes, so this is not a lossless compression ratio. Continue with the sequence lengths: roughly 100 six-dimensional tokens for an image, 245 for a DESI spectrum, and 147 for SDSS.</aside>
@@ -241,7 +241,7 @@
         <div class="kicker">My ML contribution · image tokenizer</div>
         <h2>I adapted a learned encoder-decoder into an astronomical tokenizer.</h2>
         <div class="lola-layout"><div class="lola-figure"><img src="assets/lola-autoencoder-architecture.png" alt="LoLa encoder-decoder autoencoder architecture, from image input through a latent bottleneck to image reconstruction"><span class="lola-bottleneck-highlight" aria-hidden="true"></span></div><div class="lola-contribution"><div><span>DESIGN BASIS</span><strong>LoLa encoder-decoder</strong></div><div><span>ADAPTATION</span><strong>Multiband survey images</strong></div><div><span>STUDIED BOTTLENECK</span><strong>Six continuous values per token</strong></div></div></div>
-        <p class="source-line">Architecture adapted from Rozet et al. (2025), “Lost in Latent Space”; highlighted block is the continuous latent bottleneck.</p>
+        <p class="source-line">LoLa: Rozet et al. (2025), “Lost in Latent Space”.</p>
         <aside class="notes">Timing: 0:22. I adapted the LoLa encoder-decoder to multiband survey cutouts and studied the latent representation that AION receives. The highlighted bottleneck is the continuous token grid. Six is an empirical engineering choice, not a theoretical optimum.</aside>
       </section>
 
@@ -272,7 +272,7 @@
         <p class="tokenizer-takeaway">153,600 image values → 600 latent values · 100 tokens per image.</p>
         <p class="tokenizer-compare">AION-1: 576 discrete image-token positions · this tokenizer: 100 continuous vectors.</p>
         <div hidden="" data-ai-note="done" style="position:absolute;left:630px;top:550px;width:300px;"><p data-by="author">Slide 23: Maybe show that the image gets compressed into very few numbers: image, few tokens, image.</p><p data-by="ai">La slide montre maintenant une entrée HSC, une grille 10 × 10 de 100 tokens à six valeurs, puis sa reconstruction. Le nombre de valeurs passe de 153 600 à 600.</p></div>
-        <p class="source-line">HSC PDR3 DUD · W&amp;B run fy947o8d · step 25402 · AION-1: 576 discrete positions (Parker et al., 2025); token count only, not matched bitrate or reconstruction quality.</p>
+        <p class="source-line">HSC · AION-1: Parker et al. (2025).</p>
         <aside class="notes">Timing: 0:45. Follow the same image from left to right. The source image has 160 by 160 pixels in each of six bands, or 153,600 scalar values. The tokenizer maps it to a 10 by 10 grid: 100 tokens, each with six continuous values, so 600 numbers. The decoder reconstructs the image from those tokens. AION-1 used 576 discrete image-token positions, so this run is about 5.8 times shorter in sequence length. That is not a byte-for-byte bitrate comparison: discrete IDs and six-float continuous vectors have different storage costs. The shown reconstruction is qualitative; I do not claim a matched AION-1 reconstruction-quality comparison.</aside>
       </section>
 
@@ -285,9 +285,9 @@
           <div><strong>100k</strong><span>optimisation steps</span></div>
           <div><strong>4 surveys</strong><span>images + spectra</span></div>
         </div>
-        <div class="training-scale-layout"><figure><img class="fig training-figure" src="assets/aion-training-global.png" alt="Global AION-2 training objective decreasing through 100,000 optimisation steps"><figcaption>Global training objective · 100,000 steps</figcaption></figure><figure><img class="jean-zay-photo" src="assets/jean-zay-machine-cc0.jpg" alt="Jean Zay supercomputer cabinet graphic, including the name and portrait on its public information panel"><figcaption>Jean Zay · public IDRIS information panel</figcaption></figure></div>
+        <div class="training-scale-layout"><figure><img class="fig training-figure" src="assets/aion-training-global.png" alt="Global AION-2 training objective decreasing through 100,000 optimisation steps"><figcaption>Global training objective · 100,000 steps</figcaption></figure><figure><img class="jean-zay-photo" src="assets/jean-zay-machine-cc0.jpg" alt="Jean Zay supercomputer cabinet graphic, including the name and portrait on its public information panel"><figcaption>Jean Zay</figcaption></figure></div>
         <p class="training-contribution">I prepared the data pipeline and deployed this distributed run.</p>
-        <p class="source-line">64 H100 GPUs · 16 nodes · FSDP2 · image: Clemcloum8, Wikimedia Commons, CC0 1.0 (cropped from the Jean Zay information panel).</p>
+        <p class="source-line">Jean Zay · Image: Clemcloum8 / Wikimedia Commons, CC0 1.0.</p>
         <aside class="notes">
           Timing: 0:40. This was the first production-scale AION-2 baseline, not just a training call: I prepared the data pipeline and deployed the distributed run on 64 H100 GPUs spread over 16 Jean-Zay nodes using FSDP2. It completed 100,000 steps. The global objective drops, showing successful optimisation at this scale. It does not establish scientific usefulness or downstream superiority; that is why I next freeze the encoder and probe the information in its embeddings.
         </aside>
@@ -300,7 +300,7 @@
         <div class="probe-pipeline"><div><span>INPUT</span><strong>DESI spectrum</strong></div><b>→</b><div class="probe-frozen"><span>ENCODER</span><strong>AION-2</strong><small>FROZEN</small></div><b>→</b><div><span>REPRESENTATION</span><strong>Embeddings</strong></div><b>→</b><div class="probe-trained"><span>TRAINABLE</span><strong>Small prediction head</strong><small>Only this is trained</small></div><b>→</b><div><span>TARGET</span><strong>Spectroscopic redshift</strong></div></div>
         <div class="probe-results"><p>Spatially held-out test set · N = 11,363</p><table><thead><tr><th>Prediction head</th><th>R<sup>2</sup></th></tr></thead><tbody><tr><td>Linear regression after mean pooling</td><td>0.373</td></tr><tr><td>Cross-attention over all tokens</td><td><strong>0.988</strong></td></tr></tbody></table></div>
         <p class="editorial-takeaway">A physical quantity is recoverable without an explicit galaxy-physics decoder.</p>
-        <p class="probe-source">DESI spectroscopic redshift; distinct from photometric redshift inference on COSMOS in Part 1.</p>
+        <p class="probe-source">DESI · spectroscopic redshift.</p>
         <aside class="notes">Timing: 0:55. Read the pipeline left to right. We input a DESI spectrum; AION-2 stays frozen, so none of its weights change; its contextual embeddings feed a small prediction head, and only that head is trained to predict the catalogue redshift. The simple mean-pooled linear head gets R squared 0.373. Learned cross-attention over the full token sequence reaches 0.988 on 11,363 spatially held-out objects. This shows that redshift information is accessible in the learned representation, not that this is the same experiment as Part 1: the input, sample, reference and inference setup differ. It closes the conceptual loop: both approaches recover a physical quantity, one through an explicit model and one from learned representations.</aside>
       </section>
 
@@ -309,15 +309,6 @@
         <h2>AION-1 is already being reused.</h2>
         <div class="aion-paper-wall"><article><img src="assets/aion1-use-uncertainty.png" alt="First page of Beyond Point Estimates, an AION-1 uncertainty quantification study"><strong>Uncertainty quantification</strong><span>calibrated intervals for galaxy properties</span></article><article><img src="assets/aion1-use-audit.png" alt="First page of a causal audit of survey detection channels in AION-1"><strong>Scientific audit</strong><span>survey systematics and redshift bias</span></article><article><img src="assets/aion1-use-dinospec.png" alt="First page of DINOspec, which reuses the AION-1 spectral tokenizer"><strong>Model composition</strong><span>aligning image and spectral representations</span></article></div>
         <p class="source-line">Tame-Narvaez et al. (2026), arXiv:2606.07771 · Kendiukhov (2026), arXiv:2608.23626 · Lastufka et al. (2026), arXiv:2608.30503.</p><aside class="notes">Timing: 0:25. These are independent examples of AION-1 being reused beyond its original paper: uncertainty quantification on frozen embeddings, a causal audit of survey systematics, and DINOspec reusing the spectral tokenizer for multimodal alignment. This is the broader purpose of a foundation model: not one final task, but infrastructure that other scientific work can test, adapt and sometimes challenge. Use that sentence to transition into the conclusion.</aside>
-      </section>
-
-      <!-- 21 · synthesis · 0:55 -->
-      <section class="editorial-slide" data-section="Synthesis">
-        <div class="kicker">Synthesis</div>
-        <h2>Redshift links the two parts of the internship.</h2>
-        <div class="synthesis-lanes"><div class="synthesis-source">a physical<br><strong>quantity</strong></div><article><span>PHYSICS-BASED · COSMOS PHOTOMETRY</span><strong>DSPS inference → redshift posterior</strong><p>Explicit physical model · uncertainty that must be calibrated</p></article><article><span>DATA-DRIVEN · DESI SPECTRUM</span><strong>Frozen AION-2 → redshift prediction</strong><p>Learned representation · physical information recovered by a probe</p></article></div>
-        <p class="synthesis-qualifier">Same scientific quantity; different inputs, samples and evaluation protocols.</p>
-        <aside class="notes">Timing: 0:25. Close the loop with the shared physical quantity: redshift. In Part 1 it is inferred from broadband COSMOS photometry with an explicit physical model and a posterior. In Part 2 it is predicted from DESI spectra using a frozen learned representation and a small trained head. This is a conceptual connection, not a controlled comparison: the observations, sample and evaluation differ.</aside>
       </section>
 
       <!-- 22 · conclusion + vertical Q&A backups · 0:40 -->
@@ -374,7 +365,7 @@
         <section class="backup-slide editorial-slide">
           <div class="kicker">Backup · training objective</div>
           <h2>Score candidates, then learn from their weights.</h2>
-          <div class="objective-stack"><article><div><span>1 · LIKELIHOOD</span><strong>Student-t with ν = 2</strong><p>Robustly compare each predicted and measured band.</p></div><img src="assets/student-density.png" alt="Student t probability density with two degrees of freedom"></article><article><div><span>2 · RWS LOSS</span><strong>Weighted posterior learning</strong><p>Train the proposal on all weighted candidate draws.</p></div><img src="assets/wake-loss.png" alt="Importance-weighted wake loss for the conditional flow"></article></div><p class="source-line">Report Eqs. observation-likelihood and wake-losses. The population loss adds the analogous weighted term and selection correction.</p>
+          <div class="objective-stack"><article><div><span>1 · LIKELIHOOD</span><strong>Student-t with ν = 2</strong><p>Robustly compare each predicted and measured band.</p></div><img src="assets/student-density.png" alt="Student t probability density with two degrees of freedom"></article><article><div><span>2 · RWS LOSS</span><strong>Weighted posterior learning</strong><p>Train the proposal on all weighted candidate draws.</p></div><img src="assets/wake-loss.png" alt="Importance-weighted wake loss for the conditional flow"></article></div><p class="source-line">Report: observation likelihood and wake losses.</p>
           <div hidden="" data-ai-note="done" style="position:absolute;left:407px;top:339px;width:300px;"><p data-by="author">Est-ce que cette slide n'irait pas en appendix</p><p data-by="ai">Oui : la fonction objectif a été retirée du parcours principal et déplacée dans les slides de backup sous Questions.</p></div><aside class="notes">Backup only. The Student-t likelihood scores flux agreement in each band; its product enters the importance weight. The wake loss trains q_phi using normalized candidate weights held fixed by stop-gradient. The population flow has an analogous weighted loss plus the selection-normalization term. These are distributions of draws, never a best-candidate target.</aside>
         </section>
 
@@ -399,19 +390,10 @@
         </section>
 
         <!-- Backup · original observed 002 posterior comparison -->
-        <section id="observed-002" class="backup-slide editorial-slide observed-posterior-slide" data-ref="feniks-sbeb-analysis-20260919-observed-002">
-          <div class="kicker">Backup · individual posterior</div>
-          <h2>Observed 002: encoder and NUTS.</h2>
+        <section id="observed-002" class="backup-slide editorial-slide observed-posterior-slide" aria-label="Observed 002: encoder and NUTS" data-ref="feniks-sbeb-analysis-20260919-observed-002">
           <div class="observed-posterior-layout">
             <img src="assets/feniks-observed-002.png" alt="Original five-parameter corner plot for observed 002: orange encoder distributions, dashed purple historical NUTS distributions, and red truth markers.">
-            <div class="observed-posterior-reading">
-              <p class="observed-posterior-label">JOINT POSTERIOR · 5 PARAMETERS</p>
-              <div class="observed-posterior-legend"><span class="encoder-key">Encoder</span><span class="nuts-key">Historical NUTS</span><span class="truth-key">Truth markers</span></div>
-              <p>Compare modes, widths<br>and parameter correlations.</p>
-              <p class="observed-posterior-caveat"><strong>Geometry comparison only</strong><br>The saved NUTS convergence gate failed.</p>
-            </div>
           </div>
-          <p class="source-line">FENIKS SBEB analysis · 19 September 2026 · warm IW r &lt; 29 · original observed 002 figure.</p>
           <aside class="notes">Backup only. Original image copied byte-for-byte from DSPS/outputs/reports/feniks_sbeb_analysis_20260919/assets/nuts_002.png, the individual observed 002 panel used in the NUTS montage shown in the source deck. The source builder copies report/nuts/warm_iw_r29/observed_002.png to that asset. It compares the five-dimensional distributions of redshift, stellar mass, stellar metallicity, visual attenuation and dust-law slope. Orange is the encoder, dashed purple is historical NUTS, and red marks the source figure's truth values. Keep the full joint distributions; no point estimate replaces them. The source report explicitly states that the historical NUTS chains failed the saved convergence gate, so they are not an exact-posterior reference and this figure does not demonstrate quantitative calibration. Source SHA-256: fe7f830e0d000f0d5f6a87812915bf9e94bcb207922cc9e8314a9204cf352f38.</aside>
         </section>
 
@@ -428,7 +410,7 @@
           <div class="kicker">Backup · tokenizer reconstruction</div>
           <h2>What does the image bottleneck preserve?</h2>
           <div class="tokenizer-diagnostic-grid"><figure><img src="assets/galaxy-0-input.png" alt="Input HSC r-band cutout"><figcaption>Input</figcaption></figure><figure><img src="assets/galaxy-0-reconstruction.png" alt="Reconstruction from continuous image tokens"><figcaption>Reconstruction</figcaption></figure><figure><img class="residual-emphasis" src="assets/galaxy-0-residual.png" alt="Residual image for input minus reconstruction, with display contrast increased"><figcaption>Residual · display contrast increased</figcaption></figure></div>
-          <p class="source-line">HSC PDR3 DUD validation example · ImageTokenizer W&amp;B run wqhax11n · same displayed r-band cutout.</p>
+          <p class="source-line">HSC · ImageTokenizer.</p>
           <aside class="notes">Backup only. Compare the input and reconstruction first, then point to the residual. The residual display is a qualitative, contrast-enhanced visualization of the logged residual and should not be interpreted on the input's intensity scale. No single image establishes population-level reconstruction fidelity or downstream physical information. The quantitative metrics and held-out probe results are reported separately.</aside>
         </section>
 
@@ -487,7 +469,7 @@
             <div class="codex-output"><span>OUTPUT</span><strong>33.5<span>M</span></strong><p>Generated tokens, including reasoning</p></div>
           </div>
           <p class="codex-cache-summary"><strong>95.4%</strong> of input tokens were served from cache.</p>
-          <p class="source-line">150 local logs, duplicate usage records removed · <a href="assets/codex-usage-2026-09-27.json">Audit snapshot</a><br>API estimate at 27 Sep 2026 prices; excludes Spark, tools and surcharges. Actual subscription payments are separate.</p>
+          <p class="source-line"><a href="https://developers.openai.com/api/docs/pricing">OpenAI API pricing</a> · 27 September 2026.</p>
           <aside class="notes">Backup only. These are language-model tokens from my local Codex history, not the astronomical tokens used by AION. Snapshot cutoff: 27 September 2026, 16:00:49 Europe/Paris. The earliest available usage is 29 April; earlier, deleted or other-machine usage is not covered. 150 log files were scanned, 146 contain nonzero input/output usage, and 62,224 distinct usage snapshots remain after removing 27,151 repeated snapshots. Copies of one history share the same original session ID; deduplication uses that ID together with cumulative and last-call usage, not rewritten timestamps. The sum is 9,173,282,562 tokens: 417,322,123 uncached input, 8,722,481,920 cached input, and 33,478,519 output. Reasoning is already included in output; cached input is already included in input. Repeated context counts on each model call, so this is not a count of unique words typed. The standard short-context API estimate is USD 6,718.57 using the model attribution and rates in assets/codex-usage-2026-09-27.json. GPT-5.3-Codex-Spark is excluded because no public API rate was established. Tool fees, long-context and speed surcharges, cache-write surcharges, regional uplifts and taxes are excluded. This is a list-price comparison, not an invoice, measured infrastructure cost, or number of subscription usage allowances. Sources checked on 27 September 2026: https://developers.openai.com/api/docs/pricing ; https://developers.openai.com/api/docs/models/gpt-5.5 ; https://developers.openai.com/api/docs/models/gpt-5.6-sol ; https://learn.chatgpt.com/docs/pricing .</aside>
         </section>
       </section>

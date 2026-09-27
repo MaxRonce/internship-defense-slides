@@ -157,6 +157,14 @@
       "note": "Official LSSTCam cutaway rendering; used without alteration."
     },
     {
+      "asset": "rubin-r-filter.jpg",
+      "source": "Hannah Pollek / SLAC National Accelerator Laboratory",
+      "url": "https://www6.slac.stanford.edu/media/20210312lsstrfilterlange-46jpg",
+      "download_url": "https://www6.slac.stanford.edu/sites/default/files/styles/scale_large/public/2022-09/51046076693_1127d1452b_o.jpg?itok=Cu2KNi1b",
+      "note": "Physical LSSTCam r-band filter under inspection at SLAC; photo used without alteration for an educational presentation.",
+      "media_use_url": "https://www6.slac.stanford.edu/news-and-events/news-center/media-use-guidelines"
+    },
+    {
       "asset": "dsps-architecture-revised.svg",
       "source": "User-supplied Ressources/Schema DSPS.svg, 2026-09-25",
       "note": "Updated DSPS inference diagram with a blue physical decoder and the JAX logo."

@@ -57,13 +57,6 @@
         <p class="sub">Inferring galaxy properties from photometric measurements</p><aside class="notes">Timing: 0:05. Pause, then define the data and forward model.</aside>
       </section>
 
-      <section class="editorial-slide research-goal-slide">
-        <div class="kicker">The physical-inference question</div>
-        <h2>How can Bayesian SED fitting scale to millions of galaxies?</h2>
-        <div class="research-goal-grid"><article><span>THE CHALLENGE</span><strong>Physical SED fitting is informative, but expensive.</strong><p>Repeated calls to a detailed forward model are costly at survey scale; real observations also test whether posterior uncertainties are trustworthy.</p></article><article><span>MY GOAL</span><strong>Build and evaluate amortized inference.</strong><p>Use a differentiable model to infer galaxy properties, then compare with the published Pop-COSMOS baseline on matched COSMOS observations.</p></article></div>
-        <aside class="notes">Timing: 0:20. Existing Bayesian SED-fitting methods already infer galaxy properties, but evaluating a detailed physical model for millions of objects is expensive. My goal was to develop and evaluate a differentiable amortized framework, with Pop-COSMOS as a published baseline on matched real observations. First, I will show what the measurements contain and how the forward model creates them.</aside>
-      </section>
-
       <!-- 5 · real spectrum · 0:35 -->
       <section class="editorial-slide">
         <div class="kicker">What we observe</div>
@@ -76,23 +69,26 @@
       </section>
 
       <!-- 6 · real filters and photometry · 0:50 -->
-      <section class="editorial-slide">
+      <section class="editorial-slide filter-sequence-slide">
         <div class="kicker">From telescope to photometry</div>
-        <h2>The telescope and camera shape which light reaches the detector.</h2>
-        <div class="lsst-response-layout">
-          <figure>
-            <img src="assets/rubin-camera-cutaway.jpg" alt="Cutaway rendering of the Rubin Observatory LSST camera, showing its lenses, filter assembly, and detector plane">
-            <figcaption><strong>Rubin LSSTCam</strong><span>Mirrors and camera optics focus the sky onto a detector through one selected filter.</span></figcaption>
+        <h2>From a filter to a photometric measurement.</h2>
+        <div class="filter-sequence">
+          <figure class="filter-step filter-hardware fragment fade-out" data-fragment-index="0">
+            <img src="assets/rubin-r-filter.jpg" alt="The physical Rubin LSSTCam r-band filter being inspected in a clean room at SLAC">
+            <figcaption><strong>Rubin LSSTCam</strong> · r-band filter</figcaption>
           </figure>
-          <figure>
-            <img src="assets/lsst-throughput-curves.png" alt="Six Rubin LSSTCam full-system throughput curves, u g r i z y, at airmass 1.2">
-            <figcaption><strong>Six broadband responses</strong><span>The curves combine atmosphere, telescope optics, filter, and detector. The band letters label wavelength ranges, not exact colours.</span></figcaption>
+          <figure class="filter-step filter-single fragment fade-in-then-out" data-fragment-index="0">
+            <img src="assets/spectrum-filter-overlay.png" alt="A DSPS spectrum with the Rubin r-band response superimposed in gold">
+            <figcaption>Integrate the spectrum through <strong>one filter</strong> → <strong>one photometric measurement.</strong></figcaption>
+          </figure>
+          <figure class="filter-step filter-multiple fragment fade-in" data-fragment-index="1">
+            <img src="assets/spectrum-all-filters-compact.png" alt="The same synthetic spectrum with all survey filters and the resulting photometric measurements">
+            <figcaption>Repeat with <strong>all filters</strong> → <strong>the photometric vector.</strong></figcaption>
           </figure>
         </div>
-        <p class="lsst-response-takeaway">Weight the spectrum by a band's full response and integrate: one broadband flux per filter.</p>
         <div hidden="" data-ai-note="done" style="position:absolute;left:600px;top:560px;width:300px;"><p data-by="author">“Transmittance of the light” -> talk about telescopes; we can use a beautiful image of the LSST filters, like the example.</p><p data-by="ai">Le vocabulaire distingue la transmission du filtre de la réponse complète du système. La caméra Rubin LSSTCam est montrée avec ses six courbes de réponse système et l'intégration qui produit un flux par bande.</p></div>
-        <p class="source-line">System-throughput curves: LSST throughput baseline v1.9, airmass 1.2 · Camera cutaway: SLAC / LSST Project Office.</p>
-        <aside class="notes">Timing: 0:32. The left image shows the camera optics, filter mechanism and detector. The six LSST curves combine atmosphere, telescope, selected filter and detector response; they are not just glass-filter transmission. Weight the spectrum by each full response and integrate to get one flux per band.</aside>
+        <p class="source-line">Photo: Hannah Pollek / SLAC National Accelerator Laboratory · Curves: DSPS synthetic object 4618, relative visual normalization.</p>
+        <aside class="notes">Timing: 0:45. Start with the physical Rubin LSSTCam r-band filter and explain what it is. First advance: show the old spectrum with one superimposed filter. Say: “We integrate the spectrum through the filter and obtain one photometric measurement.” The physical calculation uses the full band response, including the atmosphere, optics and detector. Second advance: show the old full-spectrum view with all survey filters and photometric points, and explain that repeating the integration produces the photometric vector. The plots show one synthetic galaxy spectrum, not several galaxy spectra; brightness is logarithmic and visually normalized. Photo source: https://www6.slac.stanford.edu/media/20210312lsstrfilterlange-46jpg</aside>
       </section>
 
       <!-- 7 · actual data and inverse problem · 0:45 -->

@@ -1,6 +1,21 @@
 {
   "sources": [
     {
+      "asset": "feniks-observed-002.png",
+      "source": "DSPS/outputs/reports/feniks_sbeb_analysis_20260919/assets/nuts_002.png",
+      "original": "report/nuts/warm_iw_r29/observed_002.png",
+      "object": "observed 002",
+      "sha256": "fe7f830e0d000f0d5f6a87812915bf9e94bcb207922cc9e8314a9204cf352f38",
+      "note": "Original full five-parameter corner plot, copied without modification. Orange: encoder; dashed purple: historical NUTS; red: source truth markers. The source report states that the saved NUTS convergence gate failed; this is a geometry diagnostic, not an exact-posterior reference or calibration result."
+    },
+    {
+      "asset": "codex-usage slide; codex-usage-2026-09-27.json",
+      "source": "Local Codex JSONL usage audit, 27 September 2026",
+      "period": "29 April 2026 to 27 September 2026, 16:00 Europe/Paris",
+      "data": "codex-usage-2026-09-27.json",
+      "note": "Usage snapshots deduplicated across copied histories. Cached input is included in total input, and reasoning in output. API equivalent uses current standard short-context prices by recorded model, with cache discounts; Spark and additional fees or surcharges are excluded. No raw conversations or account identifiers are included."
+    },
+    {
       "asset": "galaxy-0-*",
       "run": "maxronce-universit-de-tours/galactiktok/wqhax11n",
       "file": "media/images/reconstructions/mmu_hsc_pdr3_dud_22.5_115875_75d50582f90c9a68043c.png",

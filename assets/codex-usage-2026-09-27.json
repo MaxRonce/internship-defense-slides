@@ -1,0 +1,199 @@
+{
+  "snapshot_at": "2026-09-27T14:00:49.050329+00:00",
+  "timezone": "Europe/Paris",
+  "first_usage_at": "2026-04-29T10:45:34.256000+02:00",
+  "last_usage_at": "2026-09-27T16:00:03.746000+02:00",
+  "scope": "Local Codex session logs available on the audited machine; no raw conversations or account identifiers.",
+  "audit": {
+    "files_scanned": 150,
+    "files_with_nonzero_usage": 146,
+    "unique_usage_snapshots": 62224,
+    "repeated_usage_snapshots_removed": 27151,
+    "zero_input_and_output_events_excluded": 1031,
+    "method": "Sum last-call input and output counters after deduplicating on original session ID plus cumulative and last-call usage. Ignore rewritten copy timestamps when identifying duplicates. Never sum cumulative snapshots. Cached input is part of input; reasoning is part of output."
+  },
+  "tokens": {
+    "input_tokens": 9139804043,
+    "cached_input_tokens": 8722481920,
+    "uncached_input_tokens": 417322123,
+    "output_tokens": 33478519,
+    "reasoning_output_tokens": 11595158,
+    "total_tokens": 9173282562
+  },
+  "api_equivalent": {
+    "currency": "USD",
+    "price_date": "2026-09-27",
+    "basis": "Current Standard short-context API list prices applied to the recorded model for each call, preserving observed cached-input counts.",
+    "estimated_usd": 6718.57386144,
+    "excluded_model": "gpt-5.3-codex-spark",
+    "exclusions": [
+      "Spark: no public API rate established",
+      "Tool fees",
+      "Long-context and speed surcharges",
+      "Cache-write surcharges (not recoverable from these Codex counters)",
+      "Regional uplifts",
+      "Taxes"
+    ],
+    "interpretation": "Illustrative API token-price equivalent, not actual subscription spending, a measured compute cost, a historical API invoice, or a number of subscription usage allowances.",
+    "models": [
+      {
+        "model": "gpt-5.4",
+        "input_tokens": 5889632,
+        "cached_input_tokens": 5076608,
+        "output_tokens": 32782,
+        "reasoning_output_tokens": 7146,
+        "cache_write_input_tokens": 0,
+        "total_tokens": 5922414,
+        "uncached_input_tokens": 813024,
+        "calls": 99,
+        "standard_usd_per_million": {
+          "uncached_input": 2.5,
+          "cached_input": 0.25,
+          "output": 15
+        },
+        "estimated_usd": 3.793442
+      },
+      {
+        "model": "gpt-5.5",
+        "input_tokens": 2949716252,
+        "cached_input_tokens": 2801956608,
+        "output_tokens": 11074608,
+        "reasoning_output_tokens": 3355955,
+        "cache_write_input_tokens": 0,
+        "total_tokens": 2960790860,
+        "uncached_input_tokens": 147759644,
+        "calls": 21204,
+        "standard_usd_per_million": {
+          "uncached_input": 5,
+          "cached_input": 0.5,
+          "output": 30
+        },
+        "estimated_usd": 2472.014764
+      },
+      {
+        "model": "gpt-5.3-codex-spark",
+        "input_tokens": 70524491,
+        "cached_input_tokens": 67865216,
+        "output_tokens": 440599,
+        "reasoning_output_tokens": 278118,
+        "cache_write_input_tokens": 0,
+        "total_tokens": 70965090,
+        "uncached_input_tokens": 2659275,
+        "calls": 883,
+        "standard_usd_per_million": null,
+        "estimated_usd": null
+      },
+      {
+        "model": "gpt-6-luna",
+        "input_tokens": 49788803,
+        "cached_input_tokens": 47930752,
+        "output_tokens": 327783,
+        "reasoning_output_tokens": 225978,
+        "cache_write_input_tokens": 0,
+        "total_tokens": 50116586,
+        "uncached_input_tokens": 1858051,
+        "calls": 396,
+        "standard_usd_per_million": {
+          "uncached_input": 0.1,
+          "cached_input": 0.01,
+          "output": 0.5
+        },
+        "estimated_usd": 0.82900412
+      },
+      {
+        "model": "gpt-6-sol",
+        "input_tokens": 3931811,
+        "cached_input_tokens": 3631616,
+        "output_tokens": 27902,
+        "reasoning_output_tokens": 14664,
+        "cache_write_input_tokens": 0,
+        "total_tokens": 3959713,
+        "uncached_input_tokens": 300195,
+        "calls": 55,
+        "standard_usd_per_million": {
+          "uncached_input": 2,
+          "cached_input": 0.2,
+          "output": 10
+        },
+        "estimated_usd": 1.6057332000000002
+      },
+      {
+        "model": "gpt-6-astra",
+        "input_tokens": 575492979,
+        "cached_input_tokens": 545387008,
+        "output_tokens": 2335259,
+        "reasoning_output_tokens": 568618,
+        "cache_write_input_tokens": 0,
+        "total_tokens": 577828238,
+        "uncached_input_tokens": 30105971,
+        "calls": 3543,
+        "standard_usd_per_million": {
+          "uncached_input": 10,
+          "cached_input": 1,
+          "output": 50
+        },
+        "estimated_usd": 963.209668
+      },
+      {
+        "model": "gpt-5.6-luna",
+        "input_tokens": 168918021,
+        "cached_input_tokens": 152883456,
+        "output_tokens": 941554,
+        "reasoning_output_tokens": 516834,
+        "cache_write_input_tokens": 0,
+        "total_tokens": 169859575,
+        "uncached_input_tokens": 16034565,
+        "calls": 1260,
+        "standard_usd_per_million": {
+          "uncached_input": 0.2,
+          "cached_input": 0.02,
+          "output": 1.2
+        },
+        "estimated_usd": 7.39444692
+      },
+      {
+        "model": "gpt-5.6-sol",
+        "input_tokens": 5301449314,
+        "cached_input_tokens": 5085406080,
+        "output_tokens": 18231226,
+        "reasoning_output_tokens": 6605474,
+        "cache_write_input_tokens": 0,
+        "total_tokens": 5319680540,
+        "uncached_input_tokens": 216043234,
+        "calls": 34679,
+        "standard_usd_per_million": {
+          "uncached_input": 4,
+          "cached_input": 0.4,
+          "output": 20
+        },
+        "estimated_usd": 3262.959888
+      },
+      {
+        "model": "gpt-5.6-terra",
+        "input_tokens": 14092740,
+        "cached_input_tokens": 12344576,
+        "output_tokens": 66806,
+        "reasoning_output_tokens": 22371,
+        "cache_write_input_tokens": 0,
+        "total_tokens": 14159546,
+        "uncached_input_tokens": 1748164,
+        "calls": 105,
+        "standard_usd_per_million": {
+          "uncached_input": 2,
+          "cached_input": 0.2,
+          "output": 12
+        },
+        "estimated_usd": 6.766915200000001
+      }
+    ],
+    "sources": [
+      "https://developers.openai.com/api/docs/pricing",
+      "https://developers.openai.com/api/docs/models/gpt-5.4",
+      "https://developers.openai.com/api/docs/models/gpt-5.5",
+      "https://developers.openai.com/api/docs/models/gpt-5.6-sol",
+      "https://developers.openai.com/api/docs/models/gpt-5.6-terra",
+      "https://developers.openai.com/api/docs/models/gpt-5.6-luna",
+      "https://learn.chatgpt.com/docs/pricing"
+    ]
+  }
+}

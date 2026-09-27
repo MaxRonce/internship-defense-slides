@@ -1095,3 +1095,45 @@
 .reveal .backup-slide .probe-comparison h3 { min-height:0; margin:18px 0 18px; }
 .reveal .backup-slide .protocol-warning { margin-top:20px; }
 .reveal .tokenizer-diagnostic-grid img.residual-emphasis { filter:contrast(1.8) brightness(1.35); }
+
+/* Local Codex usage audit; all three bar segments share the same token scale. */
+.reveal .codex-usage-slide .codex-period { margin:12px 0 0; color:var(--ink-soft); font-size:19px; }
+.reveal .codex-headline-metrics { display:grid; grid-template-columns:1fr 1fr; gap:42px; margin-top:34px; }
+.reveal .codex-headline-metrics > div { min-width:0; }
+.reveal .codex-headline-metrics > div > span { display:block; color:var(--ink-soft); font-size:16px; font-weight:750; }
+.reveal .codex-headline-metrics strong { display:block; margin-top:7px; font-size:76px; line-height:1.12; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.reveal .codex-headline-metrics strong span { margin-left:5px; font-size:52px; }
+.reveal .codex-headline-metrics p { margin:7px 0 0; color:var(--ink-soft); font-size:18px; }
+.reveal .codex-api-metric { border-left:1px solid var(--rule); padding-left:40px; }
+.reveal .codex-api-metric strong { color:var(--gold); }
+.reveal .codex-token-bar { display:flex; width:100%; height:24px; margin-top:35px; overflow:hidden; }
+.reveal .codex-token-bar > span { display:block; height:100%; flex-shrink:0; }
+.reveal .codex-token-bar .codex-uncached { background:var(--blue); }
+.reveal .codex-token-bar .codex-cached { background:var(--teal); }
+.reveal .codex-token-bar .codex-output { background:var(--coral); }
+.reveal .codex-token-breakdown { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:28px; margin-top:25px; }
+.reveal .codex-token-breakdown > div > span { display:block; font-size:16px; font-weight:750; }
+.reveal .codex-token-breakdown strong { display:block; margin-top:8px; font-size:43px; line-height:1.2; font-variant-numeric:tabular-nums; }
+.reveal .codex-token-breakdown strong span { margin-left:4px; font-size:29px; }
+.reveal .codex-token-breakdown .codex-uncached > span { color:var(--blue); }
+.reveal .codex-token-breakdown .codex-cached > span { color:var(--teal); }
+.reveal .codex-token-breakdown .codex-output > span { color:var(--coral); }
+.reveal .codex-token-breakdown p { margin:6px 0 0; color:var(--ink-soft); font-size:17px; }
+.reveal .codex-usage-slide .codex-cache-summary { margin:29px 0 0; border-top:1px solid var(--rule); padding-top:17px; font-size:23px; }
+.reveal .codex-cache-summary strong { color:var(--teal); }
+.reveal .codex-usage-slide .source-line { bottom:22px; font-size:13px; line-height:1.5; }
+.reveal .codex-usage-slide .source-line a { color:inherit; text-decoration:underline; text-underline-offset:3px; }
+
+.reveal .observed-posterior-layout { display:grid; grid-template-columns:620px minmax(0,1fr); gap:38px; align-items:center; height:530px; margin-top:18px; }
+.reveal .observed-posterior-layout > img { display:block; width:100%; height:530px; max-height:none; margin:0; object-fit:contain; }
+.reveal .observed-posterior-reading { min-width:0; }
+.reveal .observed-posterior-reading .observed-posterior-label { margin:0 0 25px; color:var(--ink-soft); font-size:16px; font-weight:750; }
+.reveal .observed-posterior-legend { display:grid; gap:16px; font-size:24px; }
+.reveal .observed-posterior-legend span { display:flex; gap:15px; align-items:center; }
+.reveal .observed-posterior-legend span::before { content:""; display:block; width:34px; height:0; border-top:3px solid #e57d1f; }
+.reveal .observed-posterior-legend .nuts-key::before { border-color:#8261cb; border-top-style:dashed; }
+.reveal .observed-posterior-legend .truth-key::before { content:"+"; height:28px; border:0; color:#d94143; font-size:35px; font-weight:750; line-height:28px; text-align:center; }
+.reveal .observed-posterior-reading > p { margin:30px 0 0; font-size:24px; }
+.reveal .observed-posterior-reading .observed-posterior-caveat { border-top:1px solid var(--rule); padding-top:22px; color:var(--ink-soft); font-size:20px; }
+.reveal .observed-posterior-caveat strong { color:var(--gold); }
+.reveal .observed-posterior-slide .source-line { font-size:13px; }

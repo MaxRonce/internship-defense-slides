@@ -398,6 +398,23 @@
           <aside class="notes">Source: report Table 2 and Fig. 8. The calibrated MIRA reference is 2/3.</aside>
         </section>
 
+        <!-- Backup · original observed 002 posterior comparison -->
+        <section id="observed-002" class="backup-slide editorial-slide observed-posterior-slide" data-ref="feniks-sbeb-analysis-20260919-observed-002">
+          <div class="kicker">Backup · individual posterior</div>
+          <h2>Observed 002: encoder and NUTS.</h2>
+          <div class="observed-posterior-layout">
+            <img src="assets/feniks-observed-002.png" alt="Original five-parameter corner plot for observed 002: orange encoder distributions, dashed purple historical NUTS distributions, and red truth markers.">
+            <div class="observed-posterior-reading">
+              <p class="observed-posterior-label">JOINT POSTERIOR · 5 PARAMETERS</p>
+              <div class="observed-posterior-legend"><span class="encoder-key">Encoder</span><span class="nuts-key">Historical NUTS</span><span class="truth-key">Truth markers</span></div>
+              <p>Compare modes, widths<br>and parameter correlations.</p>
+              <p class="observed-posterior-caveat"><strong>Geometry comparison only</strong><br>The saved NUTS convergence gate failed.</p>
+            </div>
+          </div>
+          <p class="source-line">FENIKS SBEB analysis · 19 September 2026 · warm IW r &lt; 29 · original observed 002 figure.</p>
+          <aside class="notes">Backup only. Original image copied byte-for-byte from DSPS/outputs/reports/feniks_sbeb_analysis_20260919/assets/nuts_002.png, the individual observed 002 panel used in the NUTS montage shown in the source deck. The source builder copies report/nuts/warm_iw_r29/observed_002.png to that asset. It compares the five-dimensional distributions of redshift, stellar mass, stellar metallicity, visual attenuation and dust-law slope. Orange is the encoder, dashed purple is historical NUTS, and red marks the source figure's truth values. Keep the full joint distributions; no point estimate replaces them. The source report explicitly states that the historical NUTS chains failed the saved convergence gate, so they are not an exact-posterior reference and this figure does not demonstrate quantitative calibration. Source SHA-256: fe7f830e0d000f0d5f6a87812915bf9e94bcb207922cc9e8314a9204cf352f38.</aside>
+        </section>
+
         <!-- Backup · tokenizer design, reconstruction, and morphology -->
         <section class="backup-slide editorial-slide">
           <div class="kicker">Backup · tokenizer design</div>
@@ -450,6 +467,28 @@
           </table>
           <p class="takeaway compact">Crossmatches store row references; they do not duplicate token arrays into one giant table.</p>
           <aside class="notes">Source: report Table 4, "Jean-Zay token tables".</aside>
+        </section>
+
+        <!-- Backup · Codex usage audit, 27 September 2026 -->
+        <section id="codex-usage" class="backup-slide editorial-slide codex-usage-slide" data-ref="codex-usage-2026-09-27">
+          <div class="kicker">Backup · Codex usage</div>
+          <h2>My Codex usage, in numbers.</h2>
+          <p class="codex-period">29 April – 27 September 2026 · local usage audit</p>
+          <div class="codex-headline-metrics">
+            <div><span>TOTAL TOKENS</span><strong>9.17<span>B</span></strong><p>Input + output, including cached input</p></div>
+            <div class="codex-api-metric"><span>ESTIMATED API EQUIVALENT</span><strong>≈ $6,700</strong><p>Standard list prices, with cache discounts</p></div>
+          </div>
+          <div class="codex-token-bar" role="img" aria-label="Token breakdown: 4.549 percent uncached input, 95.086 percent cached input, and 0.365 percent output.">
+            <span class="codex-uncached" style="width:4.549321578%"></span><span class="codex-cached" style="width:95.085721617%"></span><span class="codex-output" style="width:0.364956805%"></span>
+          </div>
+          <div class="codex-token-breakdown">
+            <div class="codex-uncached"><span>INPUT · UNCACHED</span><strong>417.3<span>M</span></strong><p>Newly processed input</p></div>
+            <div class="codex-cached"><span>INPUT · CACHED</span><strong>8.722<span>B</span></strong><p>Context reused across model calls</p></div>
+            <div class="codex-output"><span>OUTPUT</span><strong>33.5<span>M</span></strong><p>Generated tokens, including reasoning</p></div>
+          </div>
+          <p class="codex-cache-summary"><strong>95.4%</strong> of input tokens were served from cache.</p>
+          <p class="source-line">150 local logs, duplicate usage records removed · <a href="assets/codex-usage-2026-09-27.json">Audit snapshot</a><br>API estimate at 27 Sep 2026 prices; excludes Spark, tools and surcharges. Actual subscription payments are separate.</p>
+          <aside class="notes">Backup only. These are language-model tokens from my local Codex history, not the astronomical tokens used by AION. Snapshot cutoff: 27 September 2026, 16:00:49 Europe/Paris. The earliest available usage is 29 April; earlier, deleted or other-machine usage is not covered. 150 log files were scanned, 146 contain nonzero input/output usage, and 62,224 distinct usage snapshots remain after removing 27,151 repeated snapshots. Copies of one history share the same original session ID; deduplication uses that ID together with cumulative and last-call usage, not rewritten timestamps. The sum is 9,173,282,562 tokens: 417,322,123 uncached input, 8,722,481,920 cached input, and 33,478,519 output. Reasoning is already included in output; cached input is already included in input. Repeated context counts on each model call, so this is not a count of unique words typed. The standard short-context API estimate is USD 6,718.57 using the model attribution and rates in assets/codex-usage-2026-09-27.json. GPT-5.3-Codex-Spark is excluded because no public API rate was established. Tool fees, long-context and speed surcharges, cache-write surcharges, regional uplifts and taxes are excluded. This is a list-price comparison, not an invoice, measured infrastructure cost, or number of subscription usage allowances. Sources checked on 27 September 2026: https://developers.openai.com/api/docs/pricing ; https://developers.openai.com/api/docs/models/gpt-5.5 ; https://developers.openai.com/api/docs/models/gpt-5.6-sol ; https://learn.chatgpt.com/docs/pricing .</aside>
         </section>
       </section>
 
